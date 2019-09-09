@@ -1,0 +1,19 @@
+/**
+ * _dez - starter theme
+ *
+ * Author: Dezodev
+ * Version: 0.0.1
+ */
+
+@import '@/scss/_variables';
+
+/* General
+ * ========================== */
+
+body {
+	background-color: $color_background; color: $color_font;
+}
+
+a {
+	color: $color_link;
+}
