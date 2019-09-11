@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 // include the js minification plugin
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
@@ -38,7 +39,13 @@ module.exports = {
 		// extract css into dedicated file
 		new MiniCssExtractPlugin({
 			filename: './dist/css/main.min.css'
-		})
+		}),
+
+		new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            Util: 'exports-loader?Util!bootstrap/js/dist/util'
+        })
 	],
 	optimization: {
 		minimizer: [
