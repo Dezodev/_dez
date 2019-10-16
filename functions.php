@@ -6,10 +6,10 @@
 
 /* Theme Support
 **=====================================*/
+
 if (!isset($content_width)) {
 	$content_width = 900;
 }
-
 
 function dezo_setup() {
 	if (function_exists('add_theme_support')) {
@@ -56,6 +56,7 @@ add_action( 'after_setup_theme', 'dezo_setup' );
 
 /* Scripts & styles
 **=====================================*/
+
 function theme_scripts() {
 	$templ_dir = get_bloginfo('template_url');
 	$templ_ver = '0.0.1';
@@ -85,6 +86,13 @@ function theme_scripts() {
 			'version'       => time(),
 			'inFooter'      => true
 		],
+		[
+			'name'          => 'dez-font-awesome',
+			'url'           => 'https://kit.fontawesome.com/e6cf48bc6b.js',
+			'dependencies'  => array(),
+			'version'       => time(),
+			'inFooter'      => false
+		],
 	];
 
 	foreach ($js_includes as $js_include) {
@@ -93,3 +101,81 @@ function theme_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'theme_scripts' );
+
+/* Navigation
+**=====================================*/
+
+function require_menu_walker () {
+	if ( !file_exists(get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php') ) {
+		// file does not exist... return an error.
+		return new WP_Error(
+			'class-wp-bootstrap-navwalker-missing',
+			__( 'It appears the class-wp-bootstrap-navwalker.php file may be missing.', 'wp-bootstrap-navwalker' )
+		);
+	} else {
+		// file exists... require it.
+		require_once get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php';
+	}
+}
+add_action('after_setup_theme', 'require_menu_walker');
+
+function register_site_menu() {
+	register_nav_menus(array(
+		'header-menu' => 'Menu principal', // Main Navigation
+		'footer-menu' => 'Menu en pied de page', // Main Navigation
+	));
+}
+add_action('init', 'register_site_menu');
+
+function dezo_nav ($location) {
+	if (empty($location)) return false;
+	$args = [];
+
+	switch ($location) {
+		case 'header-menu':
+			$args = [
+				'theme_location'  => $location,
+				'container'       => 'ul',
+				'depth'           => 2, // 1 = no dropdowns, 3 = with dropdowns.
+				'container_id'    => 'bs-example-navbar-collapse-1',
+				'menu_class'      => 'navbar-nav mr-auto',
+				'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
+				'walker'          => new WP_Bootstrap_Navwalker()
+			];
+			break;
+		case "footer-menu":
+			$args = [
+				'theme_location'	=> $location,
+				'container'			=> 'ul',
+				'depth'				=> 1,
+				'menu_class'		=> 'list-inline mb-0',
+				'add_li_class'		=> 'list-inline-item',
+			];
+			break;
+	}
+
+	wp_nav_menu($args);
+}
+
+function add_additional_class_on_li($classes, $item, $args) {
+	if($args->add_li_class) {
+		$classes[] = $args->add_li_class;
+	}
+	return $classes;
+}
+add_filter('nav_menu_css_class', 'add_additional_class_on_li', 1, 3);
+
+/* Sidebar
+**=====================================*/
+
+function register_theme_sidebar() {
+	register_sidebar([
+		'id' => 'footer-sidebar',
+		'name' => 'Footer',
+		'before_widget' => '<div class="footer-widget col-12 col-sm-6 col-md %2$s">',
+		'after_widget' => '</div>',
+		'before_title' => '<p class="footer-widget-title">',
+		'after_title' => '</p>',
+	]);
+}
+add_action('init', 'register_theme_sidebar');
