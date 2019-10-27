@@ -179,3 +179,114 @@ function register_theme_sidebar() {
 	]);
 }
 add_action('init', 'register_theme_sidebar');
+
+/* Pagination
+**=====================================*/
+
+function dezo_pagination($echo) {
+	global $wp_query;
+	$big = 999999999; // need an unlikely integer
+	$pages = paginate_links(array(
+		'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+		'format' => '?paged=%#%',
+		'current' => max( 1, get_query_var('paged') ),
+		'total' => $wp_query->max_num_pages,
+		'type'  => 'array',
+		'prev_next'   => true,
+	));
+	if(is_array($pages)) {
+		$paged = (get_query_var('paged') == 0) ? 1 : get_query_var('paged');
+		$html = '<ul class="pagination">';
+		foreach ( $pages as $page ) {
+			$suppClass = (strpos($page, 'current') !== false)? ' active' : '';
+			$page = str_replace('page-numbers', 'page-numbers page-link', $page);
+			$html .= "<li class=\"page-item$suppClass\">$page</li>";
+		}
+		$html .= '</ul>';
+		if ( $echo ) {
+			echo $html;
+		} else {
+			return $html;
+		}
+	}
+}
+
+/* Comments
+**=====================================*/
+
+ // Enable Threaded Comments
+function enable_threaded_comments() {
+	if (!is_admin()) {
+		if (is_singular() and comments_open() and (get_option('thread_comments') == 1)) {
+			wp_enqueue_script('comment-reply');
+		}
+	}
+}
+add_action('get_header', 'enable_threaded_comments');
+
+	// Move comment field to bottom
+function dezo_move_comment_field_to_bottom($fields) {
+	$comment_field = $fields['comment'];
+	unset( $fields['comment'] );
+	$fields['comment'] = $comment_field;
+
+	$cookies_field = $fields['cookies'];
+	unset( $fields['cookies'] );
+	$fields['cookies'] = $cookies_field;
+
+	return $fields;
+}
+add_filter( 'comment_form_fields', 'dezo_move_comment_field_to_bottom' );
+
+	// Custom Comments Callback
+function dezo_comments( $comment, $args, $depth ) {
+	$tag = ( 'div' === $args['style'] ) ? 'div' : 'li';
+?>
+	<<?php echo $tag; ?> id="comment-<?php comment_ID(); ?>" <?php comment_class( $args['has_children'] ? 'parent' : '' ); ?>>
+		<article class="comment-body d-flex" id="div-comment-<?php comment_ID(); ?>">
+			<?php if ( 0 != $args['avatar_size'] ): ?>
+				<div class="comment-left col-auto">
+					<a href="<?php echo get_comment_author_url(); ?>" class="comment-avatar">
+						<?php echo get_avatar( $comment, $args['avatar_size'] ); ?>
+					</a>
+				</div>
+			<?php endif; ?>
+
+			<div class="comment-text col">
+
+				<?php printf( '<h4 class="comment-heading mt-0">%s</h4>', get_comment_author_link() ); ?>
+
+				<div class="comment-metadata">
+					<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID, $args ) ); ?>" class="smooth-scroll">
+						<time datetime="<?php comment_time( 'c' ); ?>"> <?php echo get_comment_date(). ' ' .get_comment_time(); ?> </time>
+					</a>
+				</div><!-- .comment-metadata -->
+
+				<?php if ( '0' == $comment->comment_approved ) : ?>
+					<p class="comment-awaiting-moderation label label-info"><?php _e('Your comment is awaiting moderation.', 'dez-starter'); ?></p>
+				<?php endif; ?>
+
+				<div class="comment-content">
+					<?php comment_text(); ?>
+				</div><!-- .comment-content -->
+
+				<ul class="list-inline text-right">
+					<?php edit_comment_link( __('Edit', 'dez-starter'), '<li class="list-inline-item edit-link">', '</li>' ); ?>
+
+					<?php
+					comment_reply_link( array_merge( $args, array(
+						'add_below' => 'div-comment',
+						'depth'     => $depth,
+						'max_depth' => $args['max_depth'],
+						'before'    => '<li class="list-inline-item reply-link">',
+						'after'     => '</li>'
+					) ) );
+					?>
+
+				</ul>
+
+			</div>
+
+		</article>
+<?php
+}

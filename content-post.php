@@ -5,8 +5,6 @@
 		</div>
 	<?php endif; ?>
 
-	<h1><?php the_title(); ?></h1>
-
 	<div class="post__meta">
 		<?php echo get_avatar( get_the_author_meta( 'ID' ), 40 ); ?>
 		<p>

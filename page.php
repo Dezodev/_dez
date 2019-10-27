@@ -1,15 +1,19 @@
-<?php get_header(); ?>
+<?php
+get_header();
 
-<?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
-	<?php if ( has_post_thumbnail() ): ?>
-		<div class="post__thumbnail">
-			<?php the_post_thumbnail(); ?>
-		</div>
-	<?php endif; ?>
+$title = get_the_title()
+?>
 
-	<h1><?php the_title(); ?></h1>
+	<h1 class="site-heading"><?= $title ?></h1>
 
-	<?php the_content(); ?>
-<?php endwhile; endif; ?>
+	<div class="site-content">
+		<main>
+			<?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
+				<?php the_content(); ?>
+
+				<?php comments_template(); ?>
+			<?php endwhile; endif; ?>
+		</main>
+	</div>
 
 <?php get_footer(); ?>

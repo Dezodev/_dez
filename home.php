@@ -1,9 +1,18 @@
-<?php get_header(); ?>
+<?php
+get_header();
 
-<h1>Derniers articles</h1>
+$title = "Derniers articles"
+?>
 
-<?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
-	<?php get_template_part( 'content', 'postlist' ); ?>
-<?php endwhile; endif; ?>
+	<h1 class="site-heading"><?= $title ?></h1>
+
+	<div class="site-content blog-list">
+		<main>
+			<?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
+				<?php get_template_part( 'content', 'postlist' ); ?>
+			<?php endwhile; endif; ?>
+			<?php get_template_part( 'component', 'pagination' ); ?>
+		</main>
+	</div>
 
 <?php get_footer(); ?>
