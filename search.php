@@ -1,7 +1,7 @@
 <?php
 get_header();
 
-$title = get_the_archive_title();
+$title = sprintf( __( '%s search results for ', 'dezodev' ), $wp_query->found_posts ). '"' .get_search_query(). '"';
 ?>
 
 	<h1 class="site-heading"><?= $title ?></h1>
