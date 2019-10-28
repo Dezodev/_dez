@@ -290,3 +290,39 @@ function dezo_comments( $comment, $args, $depth ) {
 		</article>
 <?php
 }
+
+/* Posts
+**=====================================*/
+
+function display_post_meta_info($link_to_comment = false) {
+?>
+	<ul class="list-inline post-meta-infos">
+		<li class="list-inline-item post-date">
+			<time datetime="<?php the_time('c'); ?>">
+				<?php the_time(get_option('date_format').' '.get_option('time_format')); ?>
+			</time>
+		</li>
+
+		<?php if(get_theme_mod('dezo_post_meta_authors_display', 'show') == 'show') : ?>
+			<li class="list-inline-item post-author">
+				<i class="far fa-user-circle mr-1"></i>
+				<?php the_author_posts_link(); ?>
+			</li>
+		<?php else : ?>
+			<li class="list-inline-item post-author">
+				<i class="far fa-user-circle mr-1"></i>
+				<?= get_the_author() ?>
+			</li>
+		<?php endif ?>
+
+		<?php if (comments_open(get_the_ID())): ?>
+			<li class="list-inline-item post-comments">
+				<i class="far fa-comment-alt mr-1"></i>
+				<?php if($link_to_comment) echo '<a href="#comments-section" class="smooth-scroll">' ?>
+				<?php echo get_comments_number() ?>
+				<?php if($link_to_comment) echo '</a>' ?>
+			</li>
+		<?php endif; ?>
+	</ul>
+<?php
+}

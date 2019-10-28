@@ -11,7 +11,7 @@ $title = get_the_title()
 			<?php get_template_part( 'content', 'post' ); ?>
 
 			<div class="text-right my-3">
-				<?php edit_post_link(null, null, null, null, 'btn btn-sm btn-light'); ?>
+				<?php edit_post_link(null, null, null, null, 'btn btn-sm btn-outline-dark'); ?>
 			</div>
 
 			<?php comments_template(); ?>

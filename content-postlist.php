@@ -4,15 +4,14 @@
 			<?php the_title(); ?>
 		</a>
 	</h2>
+	<div class="post-meta-infos-container">
+		<?php display_post_meta_info(); ?>
+	</div>
 
 	<a href="<?php the_permalink(); ?>" class="post__image-link">
 		<?php the_post_thumbnail(); ?>
 	</a>
 
-	<p class="post__meta">
-		Publié le <?php the_time( get_option( 'date_format' ) ); ?>
-		par <?php the_author(); ?> • <?php comments_number(); ?>
-	</p>
 
 	<?php the_excerpt(); ?>
 
