@@ -8,7 +8,7 @@ $title = sprintf( __( '%s search results for ', 'dezodev' ), $wp_query->found_po
 
 	<div class="site-content post-list">
 		<?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
-			<?php get_template_part( 'content', 'postlist' ); ?>
+			<?php get_template_part( 'content', 'postlist-1' ); ?>
 		<?php endwhile; endif; ?>
 		<?php get_template_part( 'component', 'pagination' ); ?>
 	</div>

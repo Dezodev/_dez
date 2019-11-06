@@ -34,10 +34,34 @@ img {
 	}
 }
 
-/* Page
+/* Posts
  * ========================== */
 
-#wrapper-page {
+.posts-list {
+	.one-post {
+		margin-bottom: 30px;
+
+		.post-title {
+			font-size: 1.3rem;
+		}
+
+	}
+}
+
+.post-meta-infos {
+	border-top: 1px solid $color_grey_1;
+	padding-top: 10px;
+	font-size: 0.85rem;
+
+	.col-auto {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+
+	.row {
+		margin-left: -5px;
+		margin-right: -5px;
+	}
 }
 
 /* Footer

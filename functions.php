@@ -25,7 +25,7 @@ function dezo_setup() {
 		add_image_size('xlarge', 1000, 429, true); // XLarge Thumbnail - 21:9
 		add_image_size('large', 750, 322, true); // Large Thumbnail - 21:9
 		add_image_size('large-169', 750, 421, true); // Large Thumbnail - 16:9
-		add_image_size('medium', 250, 188, true); // Medium Thumbnail - 4:3
+		add_image_size('medium-169', 320, 180, true); // Medium Thumbnail - 16:9
 		add_image_size('small', 150, 150, true); // Small Thumbnail - 1:1
 
 		// Site header image
@@ -214,7 +214,7 @@ function dezo_pagination($echo) {
 /* Comments
 **=====================================*/
 
- // Enable Threaded Comments
+	// Enable Threaded Comments
 function enable_threaded_comments() {
 	if (!is_admin()) {
 		if (is_singular() and comments_open() and (get_option('thread_comments') == 1)) {
@@ -295,34 +295,64 @@ function dezo_comments( $comment, $args, $depth ) {
 **=====================================*/
 
 function display_post_meta_info($link_to_comment = false) {
+	$cat_list = get_the_category();
+	$cat_len = sizeof($cat_list);
+
 ?>
-	<ul class="list-inline post-meta-infos">
-		<li class="list-inline-item post-date">
-			<time datetime="<?php the_time('c'); ?>">
-				<?php the_time(get_option('date_format').' '.get_option('time_format')); ?>
-			</time>
-		</li>
+	<!-- <pre><code><?php print_r($cat_list) ?></code></pre> -->
+	<div class="post-meta-infos">
+		<div class="row">
+			<div class="col-auto post-date">
+				<time datetime="<?php the_time('c'); ?>">
+					<?php the_time(get_option('date_format').' '.get_option('time_format')); ?>
+				</time>
+			</div>
 
-		<?php if(get_theme_mod('dezo_post_meta_authors_display', 'show') == 'show') : ?>
-			<li class="list-inline-item post-author">
-				<i class="far fa-user-circle mr-1"></i>
-				<?php the_author_posts_link(); ?>
-			</li>
-		<?php else : ?>
-			<li class="list-inline-item post-author">
-				<i class="far fa-user-circle mr-1"></i>
-				<?= get_the_author() ?>
-			</li>
-		<?php endif ?>
+			<?php if(get_theme_mod('dezo_post_meta_authors_display', 'show') == 'show') : ?>
+				<div class="col-auto post-author">
+					<i class="far fa-user-circle mr-1"></i>
+					<?php the_author_posts_link(); ?>
+				</div>
+			<?php else : ?>
+				<div class="col-auto post-author">
+					<i class="far fa-user-circle mr-1"></i>
+					<?= get_the_author() ?>
+				</div>
+			<?php endif ?>
 
-		<?php if (comments_open(get_the_ID())): ?>
-			<li class="list-inline-item post-comments">
-				<i class="far fa-comment-alt mr-1"></i>
-				<?php if($link_to_comment) echo '<a href="#comments-section" class="smooth-scroll">' ?>
-				<?php echo get_comments_number() ?>
-				<?php if($link_to_comment) echo '</a>' ?>
-			</li>
-		<?php endif; ?>
-	</ul>
+			<?php if (comments_open(get_the_ID())): ?>
+				<div class="col-auto post-comments">
+					<i class="far fa-comment-alt mr-1"></i>
+					<?php if($link_to_comment) echo '<a href="#comments-section" class="smooth-scroll">' ?>
+					<?php echo get_comments_number() ?>
+					<?php if($link_to_comment) echo '</a>' ?>
+				</div>
+			<?php endif; ?>
+
+			<?php if ($cat_len > 0) : ?>
+				<div class="col-auto ml-auto post-categories">
+					<i class="far fa-folder mr-1"></i>
+					<?php
+						$i = 1;
+						foreach ($cat_list as $cat){
+							echo '<a href="'. get_category_link($cat) .'">'. $cat->name .'</a>';
+							if ($i != $cat_len) echo ', ';
+							$i++;
+						}
+					?>
+				</div>
+			<?php endif; ?>
+		</div>
+	</div>
 <?php
 }
+
+/* Images
+**=====================================*/
+
+function remove_img_size_attribute( $html ) {
+   $html = preg_replace( '/(width|height)="\d*"\s/', "", $html );
+   return $html;
+}
+add_filter( 'post_thumbnail_html', 'remove_img_size_attribute', 10 );
+add_filter( 'image_send_to_editor', 'remove_img_size_attribute', 10 );
