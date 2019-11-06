@@ -241,53 +241,54 @@ add_filter( 'comment_form_fields', 'dezo_move_comment_field_to_bottom' );
 	// Custom Comments Callback
 function dezo_comments( $comment, $args, $depth ) {
 	$tag = ( 'div' === $args['style'] ) ? 'div' : 'li';
+	$comm_id = get_comment_ID();
+
+	echo "<$tag id=\"comment-$comm_id\"". get_comment_class(($args['has_children']) ? 'parent' : '' ).">";
 ?>
-	<<?php echo $tag; ?> id="comment-<?php comment_ID(); ?>" <?php comment_class( $args['has_children'] ? 'parent' : '' ); ?>>
-		<article class="comment-body d-flex" id="div-comment-<?php comment_ID(); ?>">
-			<?php if ( 0 != $args['avatar_size'] ): ?>
-				<div class="comment-left col-auto">
-					<a href="<?php echo get_comment_author_url(); ?>" class="comment-avatar">
-						<?php echo get_avatar( $comment, $args['avatar_size'] ); ?>
-					</a>
-				</div>
+
+	<div class="comment-body d-flex" id="div-comment-<?= $comm_id ?>">
+		<?php if ($args['avatar_size'] != 0): ?>
+			<div class="comment-left comment-avatar col-auto">
+				<?php echo get_avatar( $comment, $args['avatar_size'] ); ?>
+			</div>
+		<?php endif; ?>
+
+		<div class="comment-text col">
+			<h4 class="comment-heading mt-0">
+				<?= get_comment_author_link() ?>
+			</h4>
+
+			<?php if ($comment->comment_approved == false) : ?>
+				<p class="comment-awaiting-moderation label label-info">
+					<?php _e('Your comment is awaiting moderation.', 'dez-starter'); ?>
+				</p>
 			<?php endif; ?>
 
-			<div class="comment-text col">
-
-				<?php printf( '<h4 class="comment-heading mt-0">%s</h4>', get_comment_author_link() ); ?>
-
-				<div class="comment-metadata">
-					<a href="<?php echo esc_url( get_comment_link( $comment->comment_ID, $args ) ); ?>" class="smooth-scroll">
-						<time datetime="<?php comment_time( 'c' ); ?>"> <?php echo get_comment_date(). ' ' .get_comment_time(); ?> </time>
-					</a>
-				</div><!-- .comment-metadata -->
-
-				<?php if ( '0' == $comment->comment_approved ) : ?>
-					<p class="comment-awaiting-moderation label label-info"><?php _e('Your comment is awaiting moderation.', 'dez-starter'); ?></p>
-				<?php endif; ?>
-
-				<div class="comment-content">
-					<?php comment_text(); ?>
-				</div><!-- .comment-content -->
-
-				<ul class="list-inline text-right">
-					<?php edit_comment_link( __('Edit', 'dez-starter'), '<li class="list-inline-item edit-link">', '</li>' ); ?>
-
-					<?php
-					comment_reply_link( array_merge( $args, array(
-						'add_below' => 'div-comment',
-						'depth'     => $depth,
-						'max_depth' => $args['max_depth'],
-						'before'    => '<li class="list-inline-item reply-link">',
-						'after'     => '</li>'
-					) ) );
-					?>
-
-				</ul>
-
+			<div class="comment-content">
+				<?php comment_text(); ?>
 			</div>
 
-		</article>
+			<ul class="list-inline text-right">
+				<li class="list-inline-item edit-link">
+					<time datetime="<?php comment_time( 'c' ); ?>"> <?php echo get_comment_date(). ' ' .get_comment_time(); ?> </time>
+				</li>
+				<li class="list-inline-item edit-link">
+					<?php edit_comment_link( __('Edit', 'dez-starter')); ?>
+				</li>
+				<li class="list-inline-item reply-link">
+					<?php
+						comment_reply_link( array_merge( $args, array(
+							'add_below' => 'div-comment',
+							'depth'     => $depth,
+							'max_depth' => $args['max_depth'],
+						)));
+					?>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+
 <?php
 }
 
