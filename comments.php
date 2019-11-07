@@ -6,10 +6,19 @@ $comm_args = [
 		'<label for="comment">' . _x( 'Comment', 'noun' ) . '</label>'.
 		'<textarea id="comment" class="form-control" name="comment" rows="5" aria-required="true"></textarea>'.
 		'</div>',
-	'label_submit'		=> __('Send', 'dezodev'),
-	'class_submit'		=> 'submit btn btn-primary',
-	'title_reply'		=> __('Add comment', 'dezodev'),
-	'fields'			=> [
+
+	'label_submit'			=> __('Send', 'dezodev'),
+	'class_submit'			=> 'submit btn btn-primary',
+
+	'title_reply_before'	=> '<h5 id="reply-title" class="comment-reply-title">',
+	'title_reply'			=> __('Add comment', 'dezodev'),
+	'title_reply_after'		=> '</h5>',
+
+	'cancel_reply_before'	=> '',
+	// 'cancel_reply_link'		=> '<button class="btn btn-sm btn-secondary ml-2">'. __('cancel', 'dezodev') .'</button>',
+	'cancel_reply_after'	=> '',
+
+	'fields'				=> [
 		'author' =>
 			'<div class="form-group row comment-form-author"><div class="col-sm-4"><label for="author">' . __( 'Name' ) .
 			( $req ? ' <span class="required">*</span>' : '' ) . '</label></div>' .
@@ -57,7 +66,7 @@ $comm_args = [
 			</p>
 
 		<?php else: ?>
-			<ul class="comment-list">
+			<ul id="comment-list" class="list-unstyled">
 				<?php wp_list_comments([
 					'type' 			=> 'comment',
 					'callback'		=> 'dezo_comments',

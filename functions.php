@@ -49,7 +49,7 @@ function dezo_setup() {
 		));
 
 		// Localisation Support
-		load_theme_textdomain('dez-starter', get_template_directory() . '/languages');
+		load_theme_textdomain('dezodev', get_template_directory() . '/languages');
 	}
 }
 add_action( 'after_setup_theme', 'dezo_setup' );
@@ -242,28 +242,27 @@ add_filter( 'comment_form_fields', 'dezo_move_comment_field_to_bottom' );
 function dezo_comments( $comment, $args, $depth ) {
 	$tag = ( 'div' === $args['style'] ) ? 'div' : 'li';
 	$comm_id = get_comment_ID();
+	$comm_auth_name = get_comment_author();
 
-	echo "<$tag id=\"comment-$comm_id\"". get_comment_class(($args['has_children']) ? 'parent' : '' ).">";
+	if ($args['avatar_size'] != 0) {
+		$comm_avatar_url = get_avatar_url($comment, [
+			'size' => $args['avatar_size']
+		]);
+	} else {
+		$comm_avatar_url = null;
+	}
+
+	echo "<$tag id=\"comment-$comm_id\" class=\"". join(' ', get_comment_class()) ."\">";
 ?>
-
-	<div class="comment-body d-flex" id="div-comment-<?= $comm_id ?>">
-		<?php if ($args['avatar_size'] != 0): ?>
-			<div class="comment-left comment-avatar col-auto">
-				<?php echo get_avatar( $comment, $args['avatar_size'] ); ?>
+	<div class="comment-container row" id="div-comment-<?= $comm_id ?>">
+		<?php if (!empty($comm_avatar_url)): ?>
+			<div class="col-auto comment-avatar">
+				<img src="<?php echo $comm_avatar_url ?>" class="comment-author-avatar rounded-circle" alt="Commentaire de <?php echo $comm_auth_name ?>">
 			</div>
 		<?php endif; ?>
 
-		<div class="comment-text col">
-			<h4 class="comment-heading mt-0">
-				<?= get_comment_author_link() ?>
-			</h4>
-
-			<?php if ($comment->comment_approved == false) : ?>
-				<p class="comment-awaiting-moderation label label-info">
-					<?php _e('Your comment is awaiting moderation.', 'dez-starter'); ?>
-				</p>
-			<?php endif; ?>
-
+		<div class="col comment-body">
+			<h5 class="comment-author-name mt-0 mb-1"><?php echo $comm_auth_name ?></h5>
 			<div class="comment-content">
 				<?php comment_text(); ?>
 			</div>
@@ -273,7 +272,7 @@ function dezo_comments( $comment, $args, $depth ) {
 					<time datetime="<?php comment_time( 'c' ); ?>"> <?php echo get_comment_date(). ' ' .get_comment_time(); ?> </time>
 				</li>
 				<li class="list-inline-item edit-link">
-					<?php edit_comment_link( __('Edit', 'dez-starter')); ?>
+					<?php edit_comment_link( __('Edit', 'dezodev'), '<i class="fas fa-edit mr-1"></i>'); ?>
 				</li>
 				<li class="list-inline-item reply-link">
 					<?php
@@ -281,14 +280,19 @@ function dezo_comments( $comment, $args, $depth ) {
 							'add_below' => 'div-comment',
 							'depth'     => $depth,
 							'max_depth' => $args['max_depth'],
+							'before'    => '<i class="fas fa-reply mr-1"></i>'
 						)));
 					?>
 				</li>
 			</ul>
+
+			<?php if ($comment->comment_approved == false) : ?>
+				<div class="alert alert-info comment-awaiting-moderation" role="alert">
+					<?php _e('Your comment is awaiting moderation.', 'dezodev'); ?>
+				</div>
+			<?php endif; ?>
 		</div>
-
 	</div>
-
 <?php
 }
 

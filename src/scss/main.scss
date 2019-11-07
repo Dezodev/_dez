@@ -67,74 +67,20 @@ img {
 /* Comments
  * ========================== */
 
- .comments {
- 	ul {
- 		padding-left: 0;
- 		list-style: none;
- 	}
-
- 	.comment {
- 		border-top: 1px solid #ddd;
-
- 		&:first-of-type {
- 			border-top: none;
- 		}
-
- 		.comment-heading {
- 			margin-bottom: 0;
-
- 			a {
- 				color: $color_font;
- 			}
- 		}
-
- 		.comment-body {
- 			padding-top: 25px;
- 			padding-bottom: 25px;
- 		}
-
- 		.comment-metadata {
- 			margin-bottom: 8px;
-
- 			a {
-				color: $color_font;
- 				font-size: 0.8em;
- 				line-height: 1em;
- 			}
- 		}
-
- 		ul.children,
- 		#respond {
- 			-webkit-box-flex: 0;
- 			-ms-flex: 0 0 100%;
- 			flex: 0 0 100%;
- 			max-width: 100%;
- 			position: relative;
- 			width: 100%;
- 			min-height: 1px;
- 			padding-right: 0;
- 			padding-left: 0;
- 			margin-top: 0;
-
- 			&>li {
- 				padding-left: 95px;
- 			}
-
- 			&:first-of-type {
- 				border-top: 1px solid #ddd;
- 			}
- 		}
-
- 		#respond {
- 			#reply-title {
- 				small {
- 					a {
- 						float: right;
- 					}
- 				}
- 			}
- 		}
- 	}
+#comment-list {
+	ul.children, .comment-respond {
+		padding-left: 0;
+		margin-left: 94px; // size of the avatar column
+		list-style: none;
+	}
+	.comment {
+		margin-bottom: 35px;
+	}
+	.comment-respond {
+		#cancel-comment-reply-link {
+			margin-left: 10px; font-size: 0.9rem;
+		}
+	}
 }
 
 /* Footer
