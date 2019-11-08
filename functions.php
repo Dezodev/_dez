@@ -21,7 +21,7 @@ function dezo_setup() {
 
 		// Add Thumbnail Theme Support
 		add_theme_support('post-thumbnails');
-		add_image_size('cover', 1500, 600, true); // Cover
+		add_image_size('cover', 1500, 643, true); // Cover
 		add_image_size('xlarge', 1000, 429, true); // XLarge Thumbnail - 21:9
 		add_image_size('large', 750, 322, true); // Large Thumbnail - 21:9
 		add_image_size('large-169', 750, 421, true); // Large Thumbnail - 16:9
@@ -31,7 +31,7 @@ function dezo_setup() {
 		// Site header image
 		add_theme_support('custom-header', [
 			'width'         => 1500,
-			'height'        => 600,
+			'height'        => 643,
 			'default-image' => get_template_directory_uri() . '/images/header.jpg',
 			'uploads'       => true,
 			'flex-width' => false,
