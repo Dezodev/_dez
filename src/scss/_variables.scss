@@ -6,19 +6,47 @@
 // Colors
 $color_white_1: #fff;
 
-$color_dark_1: #232931;
-$color_dark_2: #393e46;
+$color_dark_1: #303841;
+$color_dark_2: #3a4750;
+$color_dark_3: #435055;
 
 $color_grey_1: #ebf0f6;
 $color_grey_2: #f2f4fb;
+
+    // surchage des variables de bootstrap
+$blue: #263859 !default;
+$indigo: #6574cd;
+$purple: #602080;
+$pink: #ff6768;
+$red: #dd0808;
+$orange: #d65a31;
+$yellow: #f6c90e;
+$green: #2e9e79;
+$teal: #00adb5;
+$cyan: #2ca0ba;
+
+$primary: $blue;
+$secondary: $color_grey_1;
+$warning: $orange;
+$light: $color_grey_2;
+$dark: $color_dark_1;
 
 // Background
 $color_background: $color_white_1;
 
 // Font
-$color_font: #45454d;
+$color_font: $color_dark_3;
 $color_font_whi: $color_white_1;
 
-$color_link: #216583;
-$color_link_light: #add2c9;
+$color_link: #639cd9;
+$color_link_light: #5f85db;
 
+// Spacing
+    // Buttons + Forms
+$input-btn-padding-y: .12rem;
+$input-btn-padding-x: .95rem;
+$input-btn-padding-y-sm: .1rem;
+$input-btn-padding-x-sm: .75rem;
+
+// Border
+$border-radius: 2px;

@@ -11,7 +11,7 @@ $title = get_the_title();
 			<div class="posts-list">
 				<div class="row">
 					<?php while( have_posts() ) : the_post(); ?>
-						<?php get_template_part( 'content', 'postlist-1' ); ?>
+						<?php get_template_part( 'content', 'postlist-2' ); ?>
 					<?php endwhile; ?>
 				</div>
 				<?php get_template_part( 'component', 'pagination' ); ?>
