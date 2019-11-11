@@ -1,22 +1,31 @@
 <?php
 get_header();
-
-$title = "Derniers articles"
 ?>
 
-	<h1 class="site-heading"><?= $title ?></h1>
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
 
-	<div class="site-content">
-		<?php if( have_posts() ) : ?>
-			<div class="posts-list">
-				<div class="row">
-					<?php while( have_posts() ) : the_post(); ?>
-						<?php get_template_part( 'content', 'postlist-2' ); ?>
-					<?php endwhile; ?>
+			<?php if ( have_posts() ) : ?>
+				<h2><?php esc_html_e('Last posts', 'dezodev') ?></h2>
+				<div class="posts-list">
+					<div class="row">
+						<?php
+						/* Start the Loop */
+						while ( have_posts() ) : the_post();
+							get_template_part( 'content', 'postlist-2' );
+						endwhile;
+						?>
+					</div>
+					<?php get_template_part( 'component', 'pagination' ); ?>
 				</div>
-				<?php get_template_part( 'component', 'pagination' ); ?>
-			</div>
-		<?php endif; ?>
-	</div>
+			<?php
+			else :
+				get_template_part( 'content', 'none' );
+			endif;
+			?>
+
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
 
 <?php get_footer(); ?>

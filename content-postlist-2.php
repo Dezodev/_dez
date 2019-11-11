@@ -3,18 +3,20 @@
 ?>
 
 <div class="col-12 col-sm-6">
-	<div class="one-post row">
-		<div class="col-auto">
-			<a href="<?php the_permalink(); ?>" class="post__link">
-				<img
-					src="<?= get_the_post_thumbnail_url(null, "thumbnail") ?>"
-					class="post-feature-img"
-					alt="<?= $post_title ?>"
-				>
-			</a>
-		</div>
+	<div class="one-post one-post-th2 row">
+		<?php if (has_post_thumbnail()): ?>
+			<div class="col-auto">
+				<a href="<?php the_permalink(); ?>" class="post-link">
+					<img
+						src="<?= get_the_post_thumbnail_url(null, "thumbnail") ?>"
+						class="post-thumbnails"
+						alt="<?= $post_title ?>"
+					>
+				</a>
+			</div>
+		<?php endif; ?>
 		<div class="col align-self-center">
-			<a href="<?php the_permalink(); ?>" class="post__link">
+			<a href="<?php the_permalink(); ?>" class="post-link">
 				<h2 class="post-title"><?= $post_title ?></h2>
 			</a>
 

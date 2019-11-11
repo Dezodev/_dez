@@ -2,16 +2,22 @@
 get_header();
 ?>
 
-<div class="site-content">
-	<?php if( have_posts() ) : while( have_posts() ) : the_post(); ?>
-		<?php get_template_part( 'content', 'post' ); ?>
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
 
-		<div class="text-right my-3">
-			<?php edit_post_link(null, null, null, null, 'btn btn-sm btn-secondary'); ?>
-		</div>
+		<?php
+		while ( have_posts() ) : the_post();
+			get_template_part( 'content', 'post' );
+			// the_post_navigation();
+			// If comments are open or we have at least one comment, load up the comment template.
+			if ( comments_open() || get_comments_number() ) :
+				comments_template();
+			endif;
+		endwhile; // End of the loop.
+		?>
 
-		<?php comments_template(); ?>
-	<?php endwhile; endif; ?>
-</div>
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
 
 <?php get_footer(); ?>
