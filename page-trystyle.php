@@ -14,7 +14,7 @@ get_header();
 				get_template_part( 'content', 'post' );
 
 			?>
-
+			<div class="entry-content">
 				<h1>Heading 1</h1>
 				<h2>Heading 2</h2>
 				<h3>Heading 3</h3>
@@ -313,7 +313,7 @@ get_header();
 					<p class="bg-warning">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum iste, quisquam? Quia.</p>
 					<p class="bg-danger">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, eaque inventore ipsa?</p>
 				</div>
-
+			</div>
 			<?php
 				// If comments are open or we have at least one comment, load up the comment template.
 				if ( comments_open() || get_comments_number() ) :

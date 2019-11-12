@@ -42,12 +42,12 @@ $comm_args = [
 
 
 <?php if (post_password_required()) : ?>
-	<div class="site-comments protected-comments">
+	<div class="entry-comments protected-comments">
 		<p><?php _e( 'Post is password protected. Enter the password to view any comments.', 'dezodev' ); ?></p>
 	</div>
 <?php return; endif; ?>
 
-<div class="comments">
+<div class="entry-comments">
 
 	<?php if (comments_open()) : ?>
 		<h2 class="comment-title">

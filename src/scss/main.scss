@@ -70,6 +70,13 @@ table:not(.no-style):not(.table) {
 	}
 }
 
+/* Pages
+ * ========================== */
+
+.entry-content, .entry-footer, .entry-comments {
+	padding-left: 70px; padding-right: 70px;
+}
+
 /* Posts
  * ========================== */
 
@@ -81,7 +88,7 @@ table:not(.no-style):not(.table) {
 			font-size: 1.3rem;
 		}
 		.post-link:hover {
-			.post-feature-img {
+			.post-thumbnails {
 				opacity: 0.8;
 			}
 		}
@@ -131,10 +138,6 @@ table:not(.no-style):not(.table) {
 
 		.overlay-content { width: 100%; }
 	}
-}
-
-.entry-content {
-	padding-left: 70px; padding-right: 70px;
 }
 
 /* Comments
@@ -192,5 +195,32 @@ table:not(.no-style):not(.table) {
 
 	#footer-sub {
 		padding: 10px 0px; font-size: 0.9rem;
+	}
+}
+
+/* Site tools
+ * ========================== */
+
+#dezo-site-tools {
+	position: fixed; bottom: 35px; left: 0;
+
+	.tools-actions {
+		display: flex; background-color: $color_dark_3;
+		font-size: 1.2rem; color: $color_white_1;
+		border-top-right-radius: 10px;
+		border-bottom-right-radius: 10px;
+
+		.tool-item {
+			padding: 4px 15px; margin-right: 0;
+
+			&:hover {
+				background: darken($color_dark_3, 10%);
+				cursor: pointer;
+			}
+			&:last-child {
+				border-top-right-radius: 10px;
+				border-bottom-right-radius: 10px;
+			}
+		}
 	}
 }
