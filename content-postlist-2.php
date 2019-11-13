@@ -14,6 +14,12 @@
 					>
 				</a>
 			</div>
+		<?php else: ?>
+			<div class="col-auto">
+				<a href="<?php the_permalink(); ?>" class="post-link">
+					<div class="post-no-thumbnails"><i class="far fa-file-alt"></i></div>
+				</a>
+			</div>
 		<?php endif; ?>
 		<div class="col align-self-center">
 			<a href="<?php the_permalink(); ?>" class="post-link">

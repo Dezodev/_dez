@@ -6,7 +6,7 @@ get_header();
 		<main id="main" class="site-main">
 
 			<?php if ( have_posts() ) : ?>
-				<h2><?php esc_html_e('Last posts', 'dezodev') ?></h2>
+				<h2><?php esc_html_e('Latest post', 'dezodev') ?></h2>
 				<div class="posts-list">
 					<div class="row">
 						<?php

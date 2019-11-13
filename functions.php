@@ -339,7 +339,7 @@ function display_post_meta_info($link_to_comment = false) {
 
 			<?php if ($cat_len > 0) : ?>
 				<div class="col-auto ml-auto post-categories">
-					<i class="far fa-folder mr-1"></i>
+					<i class="fas fa-hashtag mr-1"></i>
 					<?php
 						$i = 1;
 						foreach ($cat_list as $cat){

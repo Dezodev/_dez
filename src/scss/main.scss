@@ -96,6 +96,16 @@ table:not(.no-style):not(.table) {
 			.post-thumbnails {
 				border-radius: 10px;
 			}
+			.post-no-thumbnails {
+				width: 150px; height: 150px; border-radius: 10px;
+				background-color: $color_grey_1; color: lighten($color_grey_1, 7%);
+				text-align: center; padding: 5px; line-height: 140px;
+				font-size: 90px;
+
+				&:hover {
+					background-color: darken($color_grey_1, 5%);
+				}
+			}
 		}
 	}
 }
@@ -202,24 +212,22 @@ table:not(.no-style):not(.table) {
  * ========================== */
 
 #dezo-site-tools {
-	position: fixed; bottom: 35px; left: 0;
+	position: fixed; bottom: 35px; left: 15px;
 
 	.tools-actions {
-		display: flex; background-color: $color_dark_3;
-		font-size: 1.2rem; color: $color_white_1;
-		border-top-right-radius: 10px;
-		border-bottom-right-radius: 10px;
+		display: flex;
 
 		.tool-item {
-			padding: 4px 15px; margin-right: 0;
+			font-size: 20px; line-height: 30px;
+			padding: 5px; margin-right: 0;
+			width: 40px; height: 40px;
+			border-radius: 15px; margin-left: 10px;
+			background-color: rgba($color_dark_2, 0.9);
+			color: $color_white_1; text-align: center;
 
 			&:hover {
 				background: darken($color_dark_3, 10%);
 				cursor: pointer;
-			}
-			&:last-child {
-				border-top-right-radius: 10px;
-				border-bottom-right-radius: 10px;
 			}
 		}
 	}
