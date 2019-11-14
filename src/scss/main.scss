@@ -116,12 +116,12 @@ body.admin-bar {
 			}
 			.post-no-thumbnails {
 				width: 150px; height: 150px; border-radius: 10px;
-				background-color: $color_white_3; color: lighten($color_white_3, 7%);
+				background-color: $color_dark_3; color: lighten($color_dark_3, 7%);
 				text-align: center; padding: 5px; line-height: 140px;
 				font-size: 90px;
 
 				&:hover {
-					background-color: darken($color_white_3, 5%);
+					background-color: darken($color_dark_3, 5%);
 				}
 			}
 		}

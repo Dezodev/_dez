@@ -12,6 +12,9 @@ $color_dark_1: #222831;
 $color_dark_2: #393e46;
 $color_dark_3: #474a56;
 
+$color_grey_1: #7c7575;
+$color_grey_2: #b8b0b0;
+$color_grey_3: #dfd3d3;
 
     // surchage des variables de bootstrap
 $blue: #263859 !default;
@@ -47,6 +50,10 @@ $input-btn-padding-y: .12rem;
 $input-btn-padding-x: .95rem;
 $input-btn-padding-y-sm: .1rem;
 $input-btn-padding-x-sm: .75rem;
+
+// input
+$input-border-color: $color_grey_3;
+$input-border-width: 1px;
 
 // Border
 $border_radius: 2px;
