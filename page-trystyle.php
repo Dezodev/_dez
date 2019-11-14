@@ -306,12 +306,30 @@ get_header();
 				<hr />
 				<h2>Contextual backgrounds</h2>
 
-				<div class="">
-					<p class="bg-primary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus deserunt sint suscipit.</p>
-					<p class="bg-success">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit veniam aperiam quasi.</p>
-					<p class="bg-info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam maxime fugiat iure.</p>
-					<p class="bg-warning">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum iste, quisquam? Quia.</p>
-					<p class="bg-danger">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, eaque inventore ipsa?</p>
+				<div class="row">
+					<div class="col-6 col-sm-4"><div class="p-3 mb-2 bg-primary text-white">.bg-primary</div></div>
+					<div class="col-6 col-sm-4"><div class="p-3 mb-2 bg-secondary text-dark">.bg-secondary</div></div>
+					<div class="col-6 col-sm-4"><div class="p-3 mb-2 bg-success text-white">.bg-success</div></div>
+					<div class="col-6 col-sm-4"><div class="p-3 mb-2 bg-danger text-white">.bg-danger</div></div>
+					<div class="col-6 col-sm-4"><div class="p-3 mb-2 bg-warning text-white">.bg-warning</div></div>
+					<div class="col-6 col-sm-4"><div class="p-3 mb-2 bg-info text-white">.bg-info</div></div>
+					<div class="col-6 col-sm-4"><div class="p-3 mb-2 bg-light text-dark">.bg-light</div></div>
+					<div class="col-6 col-sm-4"><div class="p-3 mb-2 bg-dark text-white">.bg-dark</div></div>
+					<div class="col-6 col-sm-4"><div class="p-3 mb-2 bg-white text-dark">.bg-white</div></div>
+					<div class="col-6 col-sm-4"><div class="p-3 mb-2 bg-transparent text-dark">.bg-transparent</div></div>
+
+					<div class="w-100"></div>
+
+					<div class="col-6 col-sm-4"><div class="p-3 mb-2 bg-blue text-white">.bg-blue</div></div>
+					<div class="col-6 col-sm-4"><div class="p-3 mb-2 bg-indigo text-white">.bg-indigo</div></div>
+					<div class="col-6 col-sm-4"><div class="p-3 mb-2 bg-purple text-white">.bg-purple</div></div>
+					<div class="col-6 col-sm-4"><div class="p-3 mb-2 bg-pink text-white">.bg-pink</div></div>
+					<div class="col-6 col-sm-4"><div class="p-3 mb-2 bg-red text-white">.bg-red</div></div>
+					<div class="col-6 col-sm-4"><div class="p-3 mb-2 bg-orange text-white">.bg-orange</div></div>
+					<div class="col-6 col-sm-4"><div class="p-3 mb-2 bg-yellow text-white">.bg-yellow</div></div>
+					<div class="col-6 col-sm-4"><div class="p-3 mb-2 bg-green text-white">.bg-green</div></div>
+					<div class="col-6 col-sm-4"><div class="p-3 mb-2 bg-teal text-white">.bg-teal</div></div>
+					<div class="col-6 col-sm-4"><div class="p-3 mb-2 bg-cyan text-white">.bg-cyan</div></div>
 				</div>
 			</div>
 			<?php

@@ -13,6 +13,11 @@
 
 body {
 	background-color: $color_background; color: $color_font;
+	padding-top: $body_padd_top;
+
+	&.admin-bar {
+		padding-top: $body_padd_top_admin;
+	}
 }
 
 img {
@@ -60,13 +65,26 @@ table:not(.no-style):not(.table) {
 	}
 }
 
+/* line break */
+hr {
+	margin: 35px 15%; border: none;
+	border-top: $border_grey;
+}
+
 /* Header
  * ========================== */
 
 #site-header { margin-bottom: 50px;
-
 	.navbar {
-		background-color: $color_white_1;
+		background-color: $header_backgr;
+		height: $header_height;
+		border-bottom: $header_border_size solid $header_border_color;
+	}
+}
+
+body.admin-bar {
+	#site-header .navbar {
+		top: $wp_bar_h;
 	}
 }
 
@@ -74,7 +92,7 @@ table:not(.no-style):not(.table) {
  * ========================== */
 
 .entry-content, .entry-footer, .entry-comments {
-	padding-left: 70px; padding-right: 70px;
+	margin-left: 70px; margin-right: 70px;
 }
 
 /* Posts
@@ -98,12 +116,12 @@ table:not(.no-style):not(.table) {
 			}
 			.post-no-thumbnails {
 				width: 150px; height: 150px; border-radius: 10px;
-				background-color: $color_grey_1; color: lighten($color_grey_1, 7%);
+				background-color: $color_white_3; color: lighten($color_white_3, 7%);
 				text-align: center; padding: 5px; line-height: 140px;
 				font-size: 90px;
 
 				&:hover {
-					background-color: darken($color_grey_1, 5%);
+					background-color: darken($color_white_3, 5%);
 				}
 			}
 		}
@@ -111,7 +129,7 @@ table:not(.no-style):not(.table) {
 }
 
 .post-meta-infos {
-	border-top: 1px solid $color_grey_1;
+	border-top: 1px solid $color_white_3;
 	padding-top: 10px;
 	font-size: 0.9rem;
 
@@ -152,6 +170,11 @@ table:not(.no-style):not(.table) {
 
 /* Comments
  * ========================== */
+
+.entry-comments {
+	border-top: $border_grey; margin-top: 40px;
+	padding-top: 40px;
+}
 
 #comment-list {
 	ul.children, .comment-respond {
@@ -218,11 +241,11 @@ table:not(.no-style):not(.table) {
 		display: flex;
 
 		.tool-item {
-			font-size: 20px; line-height: 30px;
+			font-size: 18px; line-height: 30px;
 			padding: 5px; margin-right: 0;
 			width: 40px; height: 40px;
-			border-radius: 15px; margin-left: 10px;
-			background-color: rgba($color_dark_2, 0.9);
+			border-radius: 20px; margin-left: 10px;
+			background-color: rgba($color_dark_3, 0.9);
 			color: $color_white_1; text-align: center;
 
 			&:hover {
@@ -230,5 +253,28 @@ table:not(.no-style):not(.table) {
 				cursor: pointer;
 			}
 		}
+	}
+}
+
+/* Utilities
+ * ========================== */
+
+/* Aditional background */
+$add_colors: (
+	"blue": $blue,
+	"indigo": $indigo,
+	"purple": $purple,
+	"pink": $pink,
+	"red": $red,
+	"orange": $orange,
+	"yellow": $yellow,
+	"green": $green,
+	"teal": $teal,
+	"cyan": $cyan
+);
+
+@each $name, $color in $add_colors {
+	.bg-#{$name} {
+		background-color: $color;
 	}
 }

@@ -17,7 +17,7 @@ $blog_description = get_bloginfo('description');
 	<?php wp_body_open(); ?>
 
 	<header id="site-header">
-		<nav class="navbar navbar-expand-lg navbar-light">
+		<nav class="navbar fixed-top navbar-expand-lg navbar-light">
 			<div class="container">
 				<a class="navbar-brand" href="<?= home_url(); ?>">
 					<?= $blog_name ?>

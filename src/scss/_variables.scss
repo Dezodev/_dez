@@ -5,13 +5,13 @@
 
 // Colors
 $color_white_1: #fff;
+$color_white_2: #f3f9fb;
+$color_white_3: #edf2f7;
 
-$color_dark_1: #303841;
-$color_dark_2: #3a4750;
-$color_dark_3: #435055;
+$color_dark_1: #222831;
+$color_dark_2: #393e46;
+$color_dark_3: #474a56;
 
-$color_grey_1: #d9d9d9;
-$color_grey_2: #f2f4fb;
 
     // surchage des variables de bootstrap
 $blue: #263859 !default;
@@ -26,9 +26,9 @@ $teal: #00adb5;
 $cyan: #2ca0ba;
 
 $primary: $blue;
-$secondary: $color_grey_1;
+$secondary: $color_white_3;
 $warning: $orange;
-$light: $color_grey_2;
+$light: $color_white_2;
 $dark: $color_dark_1;
 
 // Background
@@ -49,4 +49,16 @@ $input-btn-padding-y-sm: .1rem;
 $input-btn-padding-x-sm: .75rem;
 
 // Border
-$border-radius: 2px;
+$border_radius: 2px;
+$border_grey: 3px solid $color_white_3;
+
+// header
+$header_backgr: $color_white_1;
+$header_height: 56px;
+$header_border_size: 3px;
+$header_border_color: $color_white_3;
+
+// Structure
+$wp_bar_h: 32px;
+$body_padd_top: $header_height + $header_border_size;
+$body_padd_top_admin: $body_padd_top + $wp_bar_h;
