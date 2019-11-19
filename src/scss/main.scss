@@ -247,6 +247,7 @@ body.admin-bar {
 			border-radius: 20px; margin-left: 10px;
 			background-color: rgba($color_dark_3, 0.9);
 			color: $color_white_1; text-align: center;
+			border: none;
 
 			&:hover {
 				background: darken($color_dark_3, 10%);

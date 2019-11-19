@@ -1,4 +1,8 @@
 import 'bootstrap';
 
 
-// Back to top buttons
+jQuery(document).ready(($) => {
+	$('#tool-page-up').on('click', () => {
+		$('html,body').animate({scrollTop: 0}, 'slow');
+	})
+})
