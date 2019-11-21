@@ -32,4 +32,7 @@
 			?>
 		</div>
 	<?php endif; ?>
+	<div class="tools-item" id="reduce-tools">
+		<i class="fas fa-angle-double-left" title="<?php esc_html_e('Reduce tools') ?>"></i>
+	</div>
 </div>

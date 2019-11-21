@@ -36,7 +36,7 @@
 		</div>
 	</footer>
 
-	<?php get_template_part( 'component', 'tools' ); ?>
+	<?php get_template_part( 'templates/starter/component', 'tools' ); ?>
 
 	<?php wp_footer(); ?>
 </body>

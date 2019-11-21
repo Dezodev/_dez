@@ -68,7 +68,7 @@ function theme_scripts() {
 	$css_includes = [
 		[
 			'name'          => 'dez-theme-style',
-			'url'           => $templ_dir. '/dist/css/main.min.css',
+			'url'           => $templ_dir. '/dist/css/global.css',
 			'dependencies'  => false,
 			'version'       => time(),
 			'media'         => 'all'
@@ -84,7 +84,7 @@ function theme_scripts() {
 	$js_includes = [
 		[
 			'name'          => 'dez-theme-script',
-			'url'           => $templ_dir.'/dist/js/main.min.js',
+			'url'           => $templ_dir.'/dist/js/global.js',
 			'dependencies'  => array(),
 			'version'       => time(),
 			'inFooter'      => true

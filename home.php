@@ -12,15 +12,15 @@ get_header();
 						<?php
 						/* Start the Loop */
 						while ( have_posts() ) : the_post();
-							get_template_part( 'content', 'postlist-2' );
+							get_template_part( 'templates/starter/content', 'postlist-2' );
 						endwhile;
 						?>
 					</div>
-					<?php get_template_part( 'component', 'pagination' ); ?>
+					<?php get_template_part( 'templates/starter/component', 'pagination' ); ?>
 				</div>
 			<?php
 			else :
-				get_template_part( 'content', 'none' );
+				get_template_part( 'templates/starter/content', 'none' );
 			endif;
 			?>
 

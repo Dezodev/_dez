@@ -7,7 +7,7 @@ get_header();
 
 		<?php
 		while ( have_posts() ) : the_post();
-			get_template_part( 'content', 'post' );
+			get_template_part( 'templates/starter/content', 'post' );
 			// the_post_navigation();
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :

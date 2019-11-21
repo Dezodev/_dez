@@ -5,7 +5,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php get_template_part( 'content', 'feature-img' ); ?>
+	<?php get_template_part( 'templates/starter/content', 'feature-img' ); ?>
 
 	<div class="entry-content">
 		<?php

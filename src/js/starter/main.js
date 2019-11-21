@@ -1,3 +1,7 @@
+/**
+ * Global scripts
+ */
+
 import 'bootstrap';
 
 jQuery(document).ready(($) => {

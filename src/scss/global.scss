@@ -1,0 +1,15 @@
+/**
+ * _dez - starter theme
+ *
+ * Author: Dezodev
+ * Version: 0.0.1
+ */
+
+// Import variables
+@import './starter/_variables';
+@import './theme/_variables';
+
+
+// Import style
+@import './starter/main';
+@import './theme/main';
