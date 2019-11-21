@@ -45,4 +45,13 @@ jQuery(document).ready(($) => {
 		let url = `https://www.linkedin.com/shareArticle?mini=true&url=${pageUrl}`;
 		socialWindow(url);
 	})
+
+	// Comments drawer
+	let toggleComments = () => {
+		$('#comments-drawer').toggleClass('open')
+		$('#comments-overlay').toggleClass('show')
+	}
+
+	$('#comments-tool, .comments-block, #comments-drawer .close-btn').on('click', () => toggleComments());
+	$('#comments-overlay.show').on('click', () => toggleComments()); // FIXME: when I click on overlay, the event not fire up.
 })

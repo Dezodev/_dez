@@ -83,7 +83,8 @@ hr {
 }
 
 body.admin-bar {
-	#site-header .navbar {
+	#site-header .navbar,
+	#comments-drawer {
 		top: $wp_bar_h;
 	}
 }
@@ -147,7 +148,7 @@ body.admin-bar {
 .post-feature-img {
 	margin-bottom: 50px; position: relative;
 	img, .feature-img-overlay {
-		border-radius: 20px;
+		border-radius: $blocks_border_radius;
 	}
 	.feature-img-overlay {
 		position: absolute; top: 0; bottom: 0;
@@ -174,17 +175,65 @@ body.admin-bar {
 .entry-comments {
 	border-top: $border_grey; margin-top: 40px;
 	padding-top: 40px;
+
+	.comments-block {
+		background: $color_white_3; padding: 15px;
+		border-radius: $blocks_border_radius;
+		height: 100px; display: flex; align-items: center;
+		justify-content: center;
+
+		&:hover {
+			cursor: pointer;
+			background-color: darken($color_white_3, 5%);
+		}
+		p { margin-bottom: 0; }
+	}
 }
+
+#comments-drawer {
+	height: 100vh; width: $comments_drawer_w; z-index: 1500;
+	position: fixed; top: 0; right: -$comments_drawer_w;
+	background-color: $color_grey_6; padding: 30px 40px;
+	overflow-x: hidden; transition: 0.5s;
+
+	&.open {
+		right: 0;
+	}
+	.comment-container {
+		background: $color_white_1;
+		padding: 20px 10px;
+		margin-bottom: 20px;
+		border-radius: $border_radius;
+	}
+}
+#comments-overlay {
+	display: none;
+
+	&.show {
+		display: block; position: fixed; top: 0;
+		bottom: 0; left: 0; right: 0;  z-index: 1499;
+		background: rgba($color_dark_1, 0.75);
+	}
+}
+
+
+// #comments-overlay {
+// 	display: none;
+
+// 	&.show {
+// 		display: block; position: fixed; top: 0;
+// 		bottom: 0; left: 0; right: 0;  z-index: 1499;
+// 		background: rgba($color_dark_1, 0.75);
+// 	}
+// }
 
 #comment-list {
 	ul.children, .comment-respond {
 		padding-left: 0;
-		margin-left: 94px; // size of the avatar column
+		margin-left: 45px; // size of the avatar column
 		list-style: none;
 	}
 	.comment {
-		margin-bottom: 35px;
-
 		h5 { text-decoration: none; }
 	}
 	.comment-respond {
@@ -249,6 +298,7 @@ body.admin-bar {
 			margin-right: 10px;
 		}
 		&#page-up-tool,
+		&#comments-tool,
 		&#share-icons .share-icon {
 			cursor: pointer;
 			&:hover {

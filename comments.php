@@ -47,18 +47,39 @@ $comm_args = [
 	</div>
 <?php return; endif; ?>
 
-<div class="entry-comments">
+<?php if (comments_open()) : ?>
+	<div class="entry-comments">
+		<div class="comments-block">
+			<p>
+				<i class="far fa-comment-alt mr-1"></i>
+				<?php
+					comments_number(
+						__('No comment', 'dezodev'),
+						__('Show the comment', 'dezodev'),
+						__('Show the % comments', 'dezodev')
+					);
+				?>
+			</p>
+		</div>
+	</div>
 
-	<?php if (comments_open()) : ?>
-		<h2 class="comment-title">
-			<?php
-			comments_number(
-				__('No comment', 'dezodev'),
-				__('1 comment', 'dezodev'),
-				__('% comments', 'dezodev')
-			);
-			?>
-		</h2>
+	<div id="comments-drawer">
+		<div class="comments-header row mb-4">
+			<div class="col-auto">
+				<h2 class="comment-title m-0">
+					<?php
+						comments_number(
+							__('No comment', 'dezodev'),
+							__('1 comment', 'dezodev'),
+							__('% comments', 'dezodev')
+						);
+					?>
+				</h2>
+			</div>
+			<div class="col-auto ml-auto">
+				<button class="btn btn-sm btn-link close-btn"><i class="fas fa-times"></i></button>
+			</div>
+		</div>
 
 		<?php if (get_comments_number() <= 0) : ?>
 			<p class="zero-comment">
@@ -76,8 +97,8 @@ $comm_args = [
 				]); ?>
 			</ul><!-- .comment-list -->
 		<?php endif; ?>
-	<?php endif; ?>
 
-	<?php comment_form($comm_args); ?>
-
-</div>
+		<?php comment_form($comm_args); ?>
+	</div>
+	<div id="comments-overlay"></div>
+<?php endif; ?>

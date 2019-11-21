@@ -1,11 +1,11 @@
 
 <div id="dezo-site-tools">
 	<div class="tools-item" id="page-up-tool">
-		<i class="fas fa-angle-double-up"></i>
+		<i class="fas fa-angle-double-up" title="<?php esc_html_e('Back to top') ?>"></i>
 	</div>
 	<div class="tools-item" id="share-icons">
 		<ul class="list-inline">
-			<li class="list-inline-item">Partager :</li>
+			<li class="list-inline-item"><?php esc_html_e('Share:') ?></li>
 			<li class="list-inline-item share-icon share-icon-fb">
 				<i class="fab fa-facebook"></i>
 			</li>
@@ -20,4 +20,16 @@
 			</li>
 		</ul>
 	</div>
+	<?php if (comments_open() && is_singular()) : ?>
+		<div class="tools-item" id="comments-tool">
+			<i class="far fa-comment-alt mr-1"></i>
+			<?php
+				comments_number(
+					__('No comment', 'dezodev'),
+					__('1 comment', 'dezodev'),
+					__('% comments', 'dezodev')
+				);
+			?>
+		</div>
+	<?php endif; ?>
 </div>
