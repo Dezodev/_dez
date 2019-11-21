@@ -191,16 +191,17 @@ body.admin-bar {
 }
 
 #comments-drawer {
-	height: 100vh; width: $comments_drawer_w; z-index: 1500;
-	position: fixed; top: 0; right: -$comments_drawer_w;
-	background-color: $color_grey_6; padding: 30px 40px;
+	width: $comments_drawer_w; z-index: 1500;
+	position: fixed; top: 0; bottom: 0;
+	right: -$comments_drawer_w; padding: 30px 40px;
+	background-color: $color_white_1;
 	overflow-x: hidden; transition: 0.5s;
 
 	&.open {
 		right: 0;
 	}
 	.comment-container {
-		background: $color_white_1;
+		background: darken($color_white_3, 3%);
 		padding: 20px 10px;
 		margin-bottom: 20px;
 		border-radius: $border_radius;
@@ -215,17 +216,6 @@ body.admin-bar {
 		background: rgba($color_dark_1, 0.75);
 	}
 }
-
-
-// #comments-overlay {
-// 	display: none;
-
-// 	&.show {
-// 		display: block; position: fixed; top: 0;
-// 		bottom: 0; left: 0; right: 0;  z-index: 1499;
-// 		background: rgba($color_dark_1, 0.75);
-// 	}
-// }
 
 #comment-list {
 	ul.children, .comment-respond {
