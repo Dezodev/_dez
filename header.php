@@ -31,8 +31,29 @@ $blog_description = get_bloginfo('description');
 					<?php dezo_nav('header-menu'); ?>
 				</div>
 
-				<div class="col col-sm-auto ml-auto search-form">
-					<?php get_search_form(); ?>
+				<div class="col col-sm-auto ml-auto extra-links">
+					<ul class="list-inline">
+						<li class="list-inline-item">
+							<a href="" target="_blank">
+								<i class="fab fa-facebook-f"></i>
+							</a>
+						</li>
+						<li class="list-inline-item">
+							<a href="" target="_blank">
+								<i class="fab fa-twitter"></i>
+							</a>
+						</li>
+						<li class="list-inline-item">
+							<a href="" target="_blank">
+								<i class="fab fa-github"></i>
+							</a>
+						</li>
+						<li class="list-inline-item">
+							<a href="" target="_blank">
+								<i class="fas fa-search"></i>
+							</a>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</nav>

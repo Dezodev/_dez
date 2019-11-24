@@ -10,6 +10,12 @@ jQuery(document).ready(($) => {
 		$('html,body').animate({scrollTop: 0}, 'slow');
 	})
 
+	// Reduce tools bar
+	$("#reduce-tools").on('click', () => {
+		$('#dezo-site-tools').toggleClass('reduce')
+		$('#reduce-tools .fa-angle-double-left').toggleClass('fa-flip-horizontal')
+	})
+
 	// Social sharing
 	let socialWindow = (url) => {
 		var left = (screen.width - 700) / 2;

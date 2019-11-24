@@ -76,6 +76,20 @@ hr {
 		height: $header_height;
 		border-bottom: $header_border_size solid $header_border_color;
 	}
+
+	.extra-links {
+		ul.list-inline {
+			margin-bottom: 0;
+			.list-inline-item a {
+				color: $color_font; padding: 0.5rem 0.20rem;
+				margin-right: 0;
+
+				&:hover {
+					color: $primary;
+				}
+			}
+		}
+	}
 }
 
 body.admin-bar {
@@ -310,6 +324,12 @@ body.admin-bar {
 			.list-inline {
 				margin-bottom: 0;
 			}
+		}
+	}
+
+	&.reduce {
+		#share-icons, #comments-tool {
+			display: none;
 		}
 	}
 }
