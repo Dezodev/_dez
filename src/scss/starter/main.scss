@@ -198,9 +198,12 @@ body.admin-bar {
 	}
 	.comment-container {
 		background: darken($color_white_3, 3%);
-		padding: 20px 10px;
+		padding: 20px;
 		margin-bottom: 20px;
 		border-radius: $border_radius;
+	}
+	.comment-notes {
+		font-size: 0.85rem; color: $color_grey_1;
 	}
 }
 #comments-overlay {
@@ -220,7 +223,19 @@ body.admin-bar {
 		list-style: none;
 	}
 	.comment {
-		h5 { text-decoration: none; }
+		.comment-edit-link, .comment-reply-link {
+			@extend .btn; @extend .btn-sm;
+			@extend .btn-dark; margin-right: 5px;
+		}
+
+		.comment-header { margin-bottom: 15px;
+			h5 {
+				text-decoration: none; margin: 0;
+			}
+			time {
+				font-size: 0.9rem;
+			}
+		}
 	}
 	.comment-respond {
 		#cancel-comment-reply-link {

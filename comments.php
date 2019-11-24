@@ -1,11 +1,13 @@
 <?php
 // Comment args
+$start_form_row = '<div class="row">';
+$end_form_row = '</div>';
+
 $comm_args = [
 	'comment_field'		=>
-		'<div class="form-group comment-form-comment">'.
-		'<label for="comment">' . _x( 'Comment', 'noun' ) . '</label>'.
-		'<textarea id="comment" class="form-control" name="comment" rows="5" aria-required="true"></textarea>'.
-		'</div>',
+		'<div class="form-group comment-form-comment col-12">'.
+		'<textarea id="comment" class="form-control" name="comment" placeholder="' . __( 'Comment', 'dezodev' ) . '" rows="5" aria-required="true"></textarea>'.
+		'</div>'. $end_form_row,
 
 	'label_submit'			=> __('Send', 'dezodev'),
 	'class_submit'			=> 'submit btn btn-primary',
@@ -15,20 +17,16 @@ $comm_args = [
 	'title_reply_after'		=> '</h5>',
 
 	'cancel_reply_before'	=> '',
-	// 'cancel_reply_link'		=> '<button class="btn btn-sm btn-secondary ml-2">'. __('cancel', 'dezodev') .'</button>',
+	'cancel_reply_link'		=> '<button class="btn btn-sm btn-dark ml-2">'. __('Cancel', 'dezodev') .'</button>',
 	'cancel_reply_after'	=> '',
 
 	'fields'				=> [
 		'author' =>
-			'<div class="form-group row comment-form-author"><div class="col-sm-4"><label for="author">' . __( 'Name' ) .
-			( $req ? ' <span class="required">*</span>' : '' ) . '</label></div>' .
-			'<div class="col-sm-8"><input id="author" class="form-control" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
-			'"' . $aria_req . ' /></div></div>',
+			$start_form_row .'<div class="form-group comment-form-author col-6">' .
+			'<input id="author" class="form-control" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .'" placeholder="' . __( 'Name', 'dezodev' ) . ( $req ? ' *' : '' ) . '" ' . $aria_req . ' /></div>',
 		'email' =>
-			'<div class="form-group row comment-form-email"><div class="col-sm-4"><label for="email">' . __( 'Email' ) .
-			( $req ? ' <span class="required">*</span>' : '' ) . '</label></div>' .
-			'<div class="col-sm-8"><input id="email" class="form-control" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) .
-			'"' . $aria_req . ' /></div></div>',
+			'<div class="form-group comment-form-email col-6">' .
+			'<input id="email" class="form-control" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) .'" placeholder="' . __( 'Email', 'dezodev' ) . ( $req ? ' *' : '' ) . '" ' . $aria_req . ' /></div>',
 		'cookies' => "
 			<div class=\"form-group form-check\">
 			<input type=\"checkbox\" name=\"wp-comment-cookies-consent\" class=\"form-check-input\" id=\"cookieCmtCheck\">
@@ -93,7 +91,7 @@ $comm_args = [
 					'callback'		=> 'dezo_comments',
 					'style'			=> 'ul',
 					'short_ping'	=> true,
-					'avatar_size'	=> 64,
+					'avatar_size'	=> 42,
 				]); ?>
 			</ul><!-- .comment-list -->
 		<?php endif; ?>

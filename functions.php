@@ -257,44 +257,42 @@ function dezo_comments( $comment, $args, $depth ) {
 
 	echo "<$tag id=\"comment-$comm_id\" class=\"". join(' ', get_comment_class()) ."\">";
 ?>
-	<div class="comment-container row" id="div-comment-<?= $comm_id ?>">
-		<?php if (!empty($comm_avatar_url)): ?>
-			<div class="col-auto comment-avatar">
-				<img src="<?php echo $comm_avatar_url ?>" class="comment-author-avatar rounded-circle" alt="Commentaire de <?php echo $comm_auth_name ?>">
+	<div class="comment-container" id="div-comment-<?= $comm_id ?>">
+		<header class="comment-header row">
+			<?php if (!empty($comm_avatar_url)): ?>
+				<div class="col-auto comment-avatar">
+					<img src="<?php echo $comm_avatar_url ?>" class="comment-author-avatar rounded-circle" alt="Commentaire de <?php echo $comm_auth_name ?>">
+				</div>
+			<?php endif; ?>
+			<div class="col pl-0">
+				<h5 class="comment-author-name"><?php echo $comm_auth_name ?></h5>
+				<time datetime="<?php comment_time( 'c' ); ?>"> <?php echo get_comment_date(). ' ' .get_comment_time(); ?> </time>
+			</div>
+		</header>
+
+		<?php if ($comment->comment_approved == false) : ?>
+			<div class="alert alert-info comment-awaiting-moderation" role="alert">
+				<?php _e('Your comment is awaiting moderation.', 'dezodev'); ?>
 			</div>
 		<?php endif; ?>
 
-		<div class="col comment-body">
-			<h5 class="comment-author-name mt-0 mb-1"><?php echo $comm_auth_name ?></h5>
+		<div class="comment-body">
 			<div class="comment-content">
 				<?php comment_text(); ?>
 			</div>
-
-			<ul class="list-inline text-right">
-				<li class="list-inline-item edit-link">
-					<time datetime="<?php comment_time( 'c' ); ?>"> <?php echo get_comment_date(). ' ' .get_comment_time(); ?> </time>
-				</li>
-				<li class="list-inline-item edit-link">
-					<?php edit_comment_link( __('Edit', 'dezodev'), '<i class="fas fa-edit mr-1"></i>'); ?>
-				</li>
-				<li class="list-inline-item reply-link">
-					<?php
-						comment_reply_link( array_merge( $args, array(
-							'add_below' => 'div-comment',
-							'depth'     => $depth,
-							'max_depth' => $args['max_depth'],
-							'before'    => '<i class="fas fa-reply mr-1"></i>'
-						)));
-					?>
-				</li>
-			</ul>
-
-			<?php if ($comment->comment_approved == false) : ?>
-				<div class="alert alert-info comment-awaiting-moderation" role="alert">
-					<?php _e('Your comment is awaiting moderation.', 'dezodev'); ?>
-				</div>
-			<?php endif; ?>
 		</div>
+
+		<footer class="comment-footer">
+			<?php
+				comment_reply_link( array_merge( $args, array(
+					'add_below' => 'div-comment',
+					'depth'     => $depth,
+					'max_depth' => $args['max_depth'],
+				)));
+			?>
+
+			<?php edit_comment_link( __('Edit', 'dezodev')); ?>
+		</footer>
 	</div>
 <?php
 }
