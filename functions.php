@@ -363,6 +363,95 @@ function remove_img_size_attribute( $html ) {
 add_filter( 'post_thumbnail_html', 'remove_img_size_attribute', 10 );
 add_filter( 'image_send_to_editor', 'remove_img_size_attribute', 10 );
 
+/* Customizer
+**=====================================*/
+
+function dezo_customize_register( $wp_customize ) {
+	// Add sections
+	$wp_customize->add_section('dezo_theme_options', [
+		'title' 	=> __('Theme options', 'dezodev'),
+		'priority'	=> 30,
+	]);
+
+	// Add settings
+	$all_settings = [
+		[
+			'name'			=> 'facebook_page_url',
+			'type'			=> 'url',
+			'section'		=> 'dezo_theme_options',
+			'setting_args'	=> [ 'default'   => null, ],
+			'label'			=> __( 'Facebook page URL', 'dezodev' ),
+			'description'	=> null,
+			'input_attrs'	=> [
+				'placeholder'	=> 'https://facebook.com/sample'
+			],
+		],
+		[
+			'name'			=> 'twitter_page_url',
+			'type'			=> 'url',
+			'section'		=> 'dezo_theme_options',
+			'setting_args'	=> [ 'default'   => null, ],
+			'label'			=> __( 'Twitter page URL', 'dezodev' ),
+			'description'	=> null,
+			'input_attrs'	=> [
+				'placeholder'	=> 'https://twitter.com/sample'
+			],
+		],
+		[
+			'name'			=> 'instagram_page_url',
+			'type'			=> 'url',
+			'section'		=> 'dezo_theme_options',
+			'setting_args'	=> [ 'default'   => null, ],
+			'label'			=> __( 'Instagram page URL', 'dezodev' ),
+			'description'	=> null,
+			'input_attrs'	=> [
+				'placeholder'	=> 'https://instagram.com/sample'
+			],
+		],
+		[
+			'name'			=> 'github_page_url',
+			'type'			=> 'url',
+			'section'		=> 'dezo_theme_options',
+			'setting_args'	=> [ 'default'   => null, ],
+			'label'			=> __( 'GitHub page URL', 'dezodev' ),
+			'description'	=> null,
+			'input_attrs'	=> [
+				'placeholder'	=> 'https://github.com/sample'
+			],
+		],
+	];
+
+
+	foreach ($all_settings as $set) {
+		$wp_customize->add_setting($set['name'] , array_merge(
+			$set['setting_args'],
+			[ 'transport' => 'refresh', ]
+		));
+
+		switch ($set['type']) {
+			case 'text':
+			case 'url':
+				$wp_customize->add_control($set['name'], [
+					'type' => $set['type'],
+					'section' => $set['section'],
+					'label' => $set['label'],
+					'description' => $set['description'],
+					'input_attrs' => $set['input_attrs'],
+				]);
+				break;
+			case 'color':
+				$wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $set['name'], [
+					'label'      => $set['label'],
+					'section'    => $set['section'],
+					'settings'   => $set['name'],
+				]));
+				break;
+		}
+	}
+
+}
+add_action( 'customize_register', 'dezo_customize_register' );
+
 /* Utilities
 **=====================================*/
 

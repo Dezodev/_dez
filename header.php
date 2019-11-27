@@ -1,6 +1,13 @@
 <?php
 $blog_name = get_bloginfo('name');
 $blog_description = get_bloginfo('description');
+
+$social_links = [
+	'facebook' 	=> get_theme_mod('facebook_page_url', false),
+	'twitter' 	=> get_theme_mod('twitter_page_url', false),
+	'instagram'	=> get_theme_mod('instagram_page_url', false),
+	'github' 	=> get_theme_mod('github_page_url', false),
+];
 ?>
 
 <!DOCTYPE html>
@@ -31,29 +38,48 @@ $blog_description = get_bloginfo('description');
 					<?php dezo_nav('header-menu'); ?>
 				</div>
 
-				<div class="col col-sm-auto ml-auto extra-links">
-					<ul class="list-inline">
-						<li class="list-inline-item">
-							<a href="" target="_blank">
-								<i class="fab fa-facebook-f"></i>
-							</a>
-						</li>
-						<li class="list-inline-item">
-							<a href="" target="_blank">
-								<i class="fab fa-twitter"></i>
-							</a>
-						</li>
-						<li class="list-inline-item">
-							<a href="" target="_blank">
-								<i class="fab fa-github"></i>
-							</a>
-						</li>
-						<li class="list-inline-item">
-							<a href="" target="_blank">
+				<div class="col col-sm-auto ml-auto" id="header-right">
+					<div class="extra-links">
+						<ul class="list-inline">
+							<?php if(!empty($social_links['facebook'])): ?>
+								<li class="list-inline-item facebook-link">
+									<a href="<?php echo $social_links['facebook'] ?>" target="_blank">
+										<i class="fab fa-facebook-f"></i>
+									</a>
+								</li>
+							<?php endif; ?>
+							<?php if(!empty($social_links['twitter'])): ?>
+								<li class="list-inline-item twitter-link">
+									<a href="<?php echo $social_links['twitter'] ?>" target="_blank">
+										<i class="fab fa-twitter"></i>
+									</a>
+								</li>
+							<?php endif; ?>
+							<?php if(!empty($social_links['instagram'])): ?>
+								<li class="list-inline-item instagram-link">
+									<a href="<?php echo $social_links['instagram'] ?>" target="_blank">
+										<i class="fab fa-instagram"></i>
+									</a>
+								</li>
+							<?php endif; ?>
+							<?php if(!empty($social_links['github'])): ?>
+								<li class="list-inline-item github-link">
+									<a href="<?php echo $social_links['github'] ?>" target="_blank">
+										<i class="fab fa-github"></i>
+									</a>
+								</li>
+							<?php endif; ?>
+							<li class="list-inline-item search-link">
 								<i class="fas fa-search"></i>
-							</a>
-						</li>
-					</ul>
+							</li>
+						</ul>
+					</div>
+					<div class="search-bar">
+						<?php get_search_form(); ?>
+						<button type="button" class="btn btn-link search-close">
+							<i class="fas fa-times"></i>
+						</button>
+					</div>
 				</div>
 			</div>
 		</nav>

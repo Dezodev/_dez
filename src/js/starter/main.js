@@ -5,6 +5,11 @@
 import 'bootstrap';
 
 jQuery(document).ready(($) => {
+	// Header
+	$('.extra-links .search-link, #header-right .search-close').on('click', () => {
+		$('#header-right').toggleClass('open-search');
+	})
+
 	// Back to top button
 	$('#page-up-tool').on('click', () => {
 		$('html,body').animate({scrollTop: 0}, 'slow');

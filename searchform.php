@@ -1,4 +1,4 @@
-<form action="/" class="form-inline my-2 my-lg-0" method="get">
+<form action="/" class="search-form form-inline my-2 my-lg-0" method="get">
 	<div class="input-group">
 		<input
 			class="form-control"

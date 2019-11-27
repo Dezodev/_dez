@@ -77,16 +77,46 @@ hr {
 		border-bottom: $header_border_size solid $header_border_color;
 	}
 
-	.extra-links {
-		ul.list-inline {
-			margin-bottom: 0;
-			.list-inline-item a {
-				color: $color_font; padding: 0.5rem 0.20rem;
-				margin-right: 0;
+	#header-right{
+		.extra-links {
+			ul.list-inline {
+				margin-bottom: 0;
+				.list-inline-item {
+					padding: 0.5rem 0.35rem; margin-right: 0;
+					&, & a {
+						color: $color_font; cursor: pointer;
+
+						&:hover {
+							color: $primary;
+						}
+					}
+				}
+			}
+		}
+		.search-bar {
+			display: none;
+			.search-form {
+				display: inline-block;
+				padding: 0.5rem 0.35rem;
+			}
+			.search-close {
+				color: $color_font;
+				cursor: pointer;
+				padding: 0.5rem 0.35rem;
+				margin-left: 5px;
 
 				&:hover {
 					color: $primary;
 				}
+			}
+		}
+
+		&.open-search {
+			.extra-links {
+				display: none;
+			}
+			.search-bar {
+				display: initial;
 			}
 		}
 	}
