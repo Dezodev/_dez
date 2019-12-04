@@ -16,7 +16,7 @@
 
 			<?php if (in_array($page_type, ['single'])) : ?>
 				<div class="post-meta-infos-container">
-					<?php display_post_meta_info(); ?>
+					<?php $GLOBALS['DezoTheme_Main']->display_post_meta_info(); ?>
 				</div>
 			<?php endif; ?>
 		</div>
