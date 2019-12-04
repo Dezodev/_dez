@@ -474,7 +474,7 @@ class DezoTheme_Main {
 	<?php
 	}
 
-	function dezo_get_page_type() {
+	public function dezo_get_page_type() {
 		global $wp_query;
 		$loop = 'notfound';
 

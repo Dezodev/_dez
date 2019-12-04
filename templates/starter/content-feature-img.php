@@ -1,6 +1,6 @@
 <?php
 	$show_meta_info = false;
-	$page_type = dezo_get_page_type();
+	$page_type = $GLOBALS['DezoTheme_Main']->dezo_get_page_type();
 ?>
 
 <header class="entry-header post-feature-img">
