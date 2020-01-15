@@ -88,7 +88,7 @@ $comm_args = [
 			<ul id="comment-list" class="list-unstyled">
 				<?php wp_list_comments([
 					'type' 			=> 'comment',
-					'callback'		=> 'dezo_comments',
+					'callback'		=> [&$GLOBALS['DezoTheme_Main'], 'dezo_comments'],
 					'style'			=> 'ul',
 					'short_ping'	=> true,
 					'avatar_size'	=> 42,

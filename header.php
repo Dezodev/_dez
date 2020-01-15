@@ -8,6 +8,8 @@ $social_links = [
 	'instagram'	=> get_theme_mod('instagram_page_url', false),
 	'github' 	=> get_theme_mod('github_page_url', false),
 ];
+
+$theme_variant = get_theme_mod('theme_variant_name', 'base');
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +21,7 @@ $social_links = [
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> data-theme-variant="<?php echo $theme_variant ?>">
 
 	<?php wp_body_open(); ?>
 
@@ -35,7 +37,7 @@ $social_links = [
 				</button>
 
 				<div class="collapse navbar-collapse" id="navbarNav">
-					<?php dezo_nav('header-menu'); ?>
+					<?php $GLOBALS['DezoTheme_Main']->dezo_nav('header-menu'); ?>
 				</div>
 
 				<div class="col col-sm-auto ml-auto" id="header-right">

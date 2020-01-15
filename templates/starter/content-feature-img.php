@@ -1,6 +1,6 @@
 <?php
 	$show_meta_info = false;
-	$page_type = dezo_get_page_type();
+	$page_type = $GLOBALS['DezoTheme_Main']->dezo_get_page_type();
 ?>
 
 <header class="entry-header post-feature-img">
@@ -16,7 +16,7 @@
 
 			<?php if (in_array($page_type, ['single'])) : ?>
 				<div class="post-meta-infos-container">
-					<?php display_post_meta_info(); ?>
+					<?php $GLOBALS['DezoTheme_Main']->display_post_meta_info(); ?>
 				</div>
 			<?php endif; ?>
 		</div>

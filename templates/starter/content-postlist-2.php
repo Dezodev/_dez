@@ -32,7 +32,7 @@
 
 		</div>
 		<div class="col-12 mt-3">
-			<?php display_post_meta_info(); ?>
+			<?php $GLOBALS['DezoTheme_Main']->display_post_meta_info(); ?>
 		</div>
 	</div>
 </div>

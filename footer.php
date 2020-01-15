@@ -12,7 +12,7 @@
 
 		<div id="footer-nav">
 			<div class="container">
-				<?php dezo_nav("footer-menu"); ?>
+				<?php $GLOBALS['DezoTheme_Main']->dezo_nav("footer-menu"); ?>
 			</div>
 		</div>
 

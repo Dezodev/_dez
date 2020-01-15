@@ -1,3 +1,3 @@
 <div class="site-pagination">
-	<?php dezo_pagination(true); ?>
+	<?php $GLOBALS['DezoTheme_Main']->dezo_pagination(true); ?>
 </div>
