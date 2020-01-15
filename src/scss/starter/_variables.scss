@@ -4,48 +4,120 @@
  * ========================== */
 
 // Colors
-$color_white_1: #fff;
-$color_white_2: #f3f9fb;
-$color_white_3: #edf2f7;
-
-$color_dark_1: #222831;
-$color_dark_2: #393e46;
-$color_dark_3: #474a56;
-
-$color_grey_1: #6C757E;
-$color_grey_2: #adb5bd;
-$color_grey_3: #ced4da;
-$color_grey_4: #dee2e6;
-$color_grey_5: #e9ecef;
-$color_grey_6: #f8f9fa;
+/*blues*/
+$B50:  hsl(216, 100%, 94%);
+$B75:  hsl(214, 100%, 85%);
+$B100: hsl(214, 100%, 65%);
+$B200: hsl(214, 100%, 57%);
+$B300: hsl(216, 100%, 50%);
+$B400: hsl(216, 100%, 40%);
+$B500: hsl(216, 92%, 34%);
+/*paleblues*/
+$PB100: hsl(218, 39%, 61%);
+$PB200: hsl(219, 38%, 47%);
+$PB300: hsl(219, 49%, 39%);
+$PB400: hsl(219, 64%, 30%);
+$PB500: hsl(220, 76%, 23%);
+/*purples*/
+$P50:  hsl(250, 100%, 95%);
+$P75:  hsl(250, 70%, 83%);
+$P100: hsl(249, 50%, 70%);
+$P200: hsl(250, 56%, 66%);
+$P300: hsl(249, 46%, 54%);
+$P400: hsl(249, 43%, 46%);
+$P500: hsl(249, 49%, 39%);
+$P600: hsl(253, 36%, 35%);
+/*teals*/
+$T50:  hsl(187, 100%, 95%);
+$T75:  hsl(188, 100%, 85%);
+$T100: hsl(188, 82%, 71%);
+$T200: hsl(188, 100%, 45%);
+$T300: hsl(189, 100%, 43%);
+$T400: hsl(189, 100%, 37%);
+$T500: hsl(189, 100%, 33%);
+/*greens*/
+$G50:  hsl(149, 81%, 94%);
+$G75:  hsl(151, 79%, 82%);
+$G100: hsl(155, 82%, 71%);
+$G200: hsl(155, 63%, 60%);
+$G300: hsl(155, 54%, 46%);
+$G400: hsl(160, 100%, 26%);
+$G500: hsl(160, 100%, 20%);
+/*yellows*/
+$Y50:  hsl(48, 100%, 95%);
+$Y75:  hsl(48, 100%, 85%);
+$Y100: hsl(47, 100%, 75%);
+$Y200: hsl(46, 100%, 50%);
+$Y300: hsl(40, 100%, 50%);
+$Y400: hsl(33, 100%, 56%);
+$Y500: hsl(33, 100%, 50%);
+/*reds*/
+$R50:  hsl(14, 100%, 95%);
+$R75:  hsl(12, 100%, 84%);
+$R100: hsl(12, 100%, 73%);
+$R200: hsl(12, 100%, 66%);
+$R300: hsl(11, 100%, 59%);
+$R400: hsl(12, 91%, 46%);
+$R500: hsl(12, 100%, 37%);
+/*light neutrals*/
+$N0:  hsl(0, 0%, 100%);
+$N10: hsl(210, 25%, 98%);
+$N20: hsl(220, 16%, 96%);
+$N30: hsl(228, 14%, 93%);
+$N40: hsl(220, 10%, 89%);
+$N50: hsl(216, 14%, 79%);
+/*mid neutrals*/
+$N60:  hsl(217, 13%, 74%);
+$N70:  hsl(217, 13%, 69%);
+$N80:  hsl(218, 13%, 64%);
+$N90:  hsl(218, 13%, 59%);
+$N100: hsl(218, 14%, 54%);
+$N200: hsl(218, 14%, 49%);
+$N300: hsl(218, 17%, 44%);
+$N400: hsl(218, 20%, 39%);
+/*neutrals*/
+$N500: hsl(218, 25%, 35%);
+$N600: hsl(218, 31%, 30%);
+$N700: hsl(218, 41%, 25%);
+$N800: hsl(218, 54%, 20%);
+$N900: hsl(218, 76%, 15%);
+/*grayscale*/
+$GS25:  hsl(0, 0%, 85%);
+$GS50:  hsl(0, 0%, 80%);
+$GS75:  hsl(0, 0%, 70%);
+$GS100: hsl(0, 0%, 60%);
+$GS200: hsl(0, 0%, 45%);
+$GS300: hsl(0, 0%, 30%);
+$GS400: hsl(0, 0%, 15%);
+$GS500: hsl(0, 0%, 0%);
 
     // surchage des variables de bootstrap
-$blue: #263859;
-$indigo: #6574cd;
-$purple: #602080;
+$blue: $N800;
+$indigo: $PB200;
+$purple: $P500;
 $pink: #ff6768;
-$red: #dd0808;
-$orange: #d65a31;
-$yellow: #f6c90e;
-$green: #2e9e79;
-$teal: #00adb5;
-$cyan: #2ca0ba;
+$red: $R500;
+$orange: $Y500;
+$yellow: $Y300;
+$green: $G500;
+$teal: $T500;
+$cyan: $T500;
 
 $primary: $blue;
-$secondary: $color_white_3;
+$secondary: $N40;
 $warning: $orange;
-$light: $color_white_2;
-$dark: $color_dark_1;
+$light: $N20;
+$dark: $GS400;
 
 // Background
-$color_background: $color_white_1;
+$color_background: $N0;
 
 // Font
-$color_font: $color_dark_3;
-$color_font_whi: $color_white_1;
+$color_font: $GS300;
+$color_font_whi: $N0;
 
-$color_link: #537ec5;
-$color_link_light: #96d1c7;
+$color_link: $PB300;
+$color_link_light: $B75;
 
 // Spacing
     // Buttons + Forms
@@ -55,19 +127,19 @@ $input-btn-padding-y-sm: .1rem;
 $input-btn-padding-x-sm: .75rem;
 
 // input
-$input-border-color: $color_grey_3;
+$input-border-color: $N200;
 $input-border-width: 1px;
 
 // Border
-$border_radius: 2px;
-$blocks_border_radius: 20px;
-$border_grey: 3px solid $color_white_3;
+$border_radius: 3px;
+$blocks_border_radius: 15px;
+$border_grey: 3px solid $N40;
 
 // header
-$header_backgr: $color_white_1;
+$header_backgr: $N0;
 $header_height: 56px;
 $header_border_size: 3px;
-$header_border_color: $color_white_3;
+$header_border_color: $N40;
 
 // Structure
 $wp_bar_h: 32px;
