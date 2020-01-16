@@ -33,6 +33,6 @@
 		</div>
 	<?php endif; ?>
 	<div class="tools-item" id="reduce-tools">
-		<i class="fas fa-angle-double-left" title="<?php esc_html_e('Reduce tools') ?>"></i>
+		<i class="fas fa-angle-double-left" title="<?php esc_html_e('Toggle tools bar') ?>"></i>
 	</div>
 </div>

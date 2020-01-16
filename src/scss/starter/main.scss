@@ -9,7 +9,7 @@
 
 body {
 	background-color: $color_background; color: $color_font;
-	padding-top: $body_padd_top;
+	padding-top: $body_padd_top; font-weight: $color_font_w_normal;
 
 	&.admin-bar {
 		padding-top: $body_padd_top_admin;
@@ -23,7 +23,7 @@ img {
 /* Font */
 h1, h2, h3, h4, h5,
 .h1, .h2, .h3, .h4, .h5 {
-	color: $color_font; margin-bottom: 10px; font-weight: 500;
+	color: $color_font; margin-bottom: 10px; font-weight: $color_font_w_bold;
 }
 h1, .h1 { font-size: 34px; }
 h2, .h2 { font-size: 28px; }
@@ -73,6 +73,14 @@ table:not(.no-style):not(.table) {
 hr {
 	margin: 35px 15%; border: none;
 	border-top: $border_grey;
+}
+
+/* Form */
+
+.input-group {
+	.btn {
+		border-color: $input-border-color;
+	}
 }
 
 /* Header
@@ -140,13 +148,14 @@ body.admin-bar {
 /* Pages
  * ========================== */
 
-.entry-content, .entry-footer, .entry-comments {
+.entry-content, .entry-footer, .entry-comments, #dezo-post-navigation {
 	margin-left: 70px; margin-right: 70px;
 }
 
 /* Posts
  * ========================== */
 
+// Posts list
 .posts-list {
 	.one-post {
 		margin-bottom: 30px;
@@ -165,12 +174,12 @@ body.admin-bar {
 			}
 			.post-no-thumbnails {
 				width: 150px; height: 150px; border-radius: 10px;
-				background-color: $GS200; color: $GS100;
+				background-color: $N400; color: $N100;
 				text-align: center; padding: 5px; line-height: 140px;
 				font-size: 90px;
 
 				&:hover {
-					background-color: $GS300;
+					background-color: $N300;
 				}
 			}
 		}
@@ -214,6 +223,36 @@ body.admin-bar {
 		a { color: $color_link_light; }
 
 		.overlay-content { width: 100%; }
+	}
+}
+
+// Post navigation
+#dezo-post-navigation {
+	border-top: $border_grey; margin-top: 40px;
+	padding-top: 40px;
+
+	.next-col {
+		text-align: right;
+	}
+	.post-navigation-link {
+		color: $color_font;
+
+		&:hover {
+			text-decoration: none;
+			.link-label {
+				color: $primary;
+			}
+			.link-title {
+				text-decoration: underline;
+			}
+		}
+		.link-label {
+			margin-bottom: 0; color: $GS200;
+			font-size: 0.8em; font-weight: $color_font_w_bold;
+		}
+		.link-title {
+			margin-bottom: 0;
+		}
 	}
 }
 
@@ -310,7 +349,7 @@ body.admin-bar {
 		.footer-widget {
 			.footer-widget-title {
 				font-size: 1.2em; text-transform: uppercase;
-				font-weight: bold;
+				font-weight: $color_font_w_bold;
 			}
 
 			ul {
@@ -341,7 +380,7 @@ body.admin-bar {
 	z-index: 100; padding: 0 0 0 25px; display: flex;
 	background: $primary; color: $color_font_whi;
 	border-top-right-radius: $border_radius;
-	box-shadow: -1px 1px 2px 2px rgba($GS300, 0.3);
+	box-shadow: -2px 2px 4px 4px rgba($N300, 0.5);
 
 	.tools-item {
 		padding: 7px 20px;

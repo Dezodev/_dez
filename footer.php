@@ -21,7 +21,10 @@
 				<div class="row">
 					<div class="col col-sm-auto">
 						<p class="site-copyright mb-0">
-							&copy; <?php echo date('Y'); ?> <a href="#"><?php bloginfo('name'); ?> - <?php bloginfo('description'); ?></a>
+							&copy; <?php echo date('Y'); ?>
+							<a href="<?php echo bloginfo('url'); ?>">
+								<?php bloginfo('name'); ?> - <?php bloginfo('description'); ?>
+							</a>
 						</p>
 					</div>
 					<div class="col col-sm-auto ml-auto">
