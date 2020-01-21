@@ -5,9 +5,9 @@ $end_form_row = '</div>';
 
 $comm_args = [
 	'comment_field'		=>
-		'<div class="form-group comment-form-comment col-12">'.
+		'<div class="form-group comment-form-comment">'.
 		'<textarea id="comment" class="form-control" name="comment" placeholder="' . __( 'Comment', 'dezodev' ) . '" rows="5" aria-required="true"></textarea>'.
-		'</div>'. $end_form_row,
+		'</div>',
 
 	'label_submit'			=> __('Send', 'dezodev'),
 	'class_submit'			=> 'submit btn btn-primary',
@@ -26,7 +26,7 @@ $comm_args = [
 			'<input id="author" class="form-control" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .'" placeholder="' . __( 'Name', 'dezodev' ) . ( $req ? ' *' : '' ) . '" ' . $aria_req . ' /></div>',
 		'email' =>
 			'<div class="form-group comment-form-email col-6">' .
-			'<input id="email" class="form-control" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) .'" placeholder="' . __( 'Email', 'dezodev' ) . ( $req ? ' *' : '' ) . '" ' . $aria_req . ' /></div>',
+			'<input id="email" class="form-control" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) .'" placeholder="' . __( 'Email', 'dezodev' ) . ( $req ? ' *' : '' ) . '" ' . $aria_req . ' /></div>'. $end_form_row,
 		'cookies' => "
 			<div class=\"form-group form-check\">
 			<input type=\"checkbox\" name=\"wp-comment-cookies-consent\" class=\"form-check-input\" id=\"cookieCmtCheck\">
@@ -79,24 +79,27 @@ $comm_args = [
 			</div>
 		</div>
 
-		<?php if (get_comments_number() <= 0) : ?>
-			<p class="zero-comment">
-				<?php _e('There are no comments for the moment. Be the first to participate!', 'dezodev') ?>
-			</p>
+		<div class="comments-body">
+			<?php if (get_comments_number() <= 0) : ?>
+				<p class="zero-comment">
+					<?php _e('There are no comments for the moment. Be the first to participate!', 'dezodev') ?>
+				</p>
 
-		<?php else: ?>
-			<ul id="comment-list" class="list-unstyled">
-				<?php wp_list_comments([
-					'type' 			=> 'comment',
-					'callback'		=> [&$GLOBALS['DezoTheme_Main'], 'dezo_comments'],
-					'style'			=> 'ul',
-					'short_ping'	=> true,
-					'avatar_size'	=> 42,
-				]); ?>
-			</ul><!-- .comment-list -->
-		<?php endif; ?>
+			<?php else: ?>
+				<ul id="comment-list" class="list-unstyled">
+					<?php wp_list_comments([
+						'type' 			=> 'comment',
+						'callback'		=> [&$GLOBALS['DezoTheme_Main'], 'dezo_comments'],
+						'style'			=> 'ul',
+						'short_ping'	=> true,
+						'avatar_size'	=> 42,
+					]); ?>
+				</ul><!-- .comment-list -->
+			<?php endif; ?>
 
-		<?php comment_form($comm_args); ?>
+			<?php comment_form($comm_args); ?>
+					</div>
+		</div>
 	</div>
 	<div id="comments-overlay"></div>
 <?php endif; ?>

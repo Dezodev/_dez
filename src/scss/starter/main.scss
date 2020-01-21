@@ -25,11 +25,21 @@ h1, h2, h3, h4, h5,
 .h1, .h2, .h3, .h4, .h5 {
 	color: $color_font; margin-bottom: 10px; font-weight: $color_font_w_bold;
 }
-h1, .h1 { font-size: 34px; }
-h2, .h2 { font-size: 28px; }
-h3, .h3 { font-size: 23px; }
-h4, .h4 { font-size: 17px; }
-h5, .h5 { font-size: 16px; text-decoration: underline; }
+h1, .h1 { font-size: 34px;
+	.anchor-link { line-height: 34px; }
+}
+h2, .h2 { font-size: 28px;
+	.anchor-link { line-height: 28px; }
+}
+h3, .h3 { font-size: 23px;
+	.anchor-link { line-height: 23px; }
+}
+h4, .h4 { font-size: 17px;
+	.anchor-link { line-height: 17px; }
+}
+h5, .h5 { font-size: 16px; text-decoration: underline;
+	.anchor-link { line-height: 16px; }
+}
 
 a, .sim-link { color: $color_link;
 	&:hover { color: darken($color_link, 10%); }
@@ -76,10 +86,30 @@ hr {
 }
 
 /* Form */
-
 .input-group {
 	.btn {
 		border-color: $input-border-color;
+	}
+}
+
+/* Deep anchors links */
+.anchor-heading {
+	position: relative; margin-left: -25px; padding-left: 25px;
+	.anchor-link {
+		position: absolute; top: 2px; left: 0;
+		font-size: 0.8em; color: $color_link;
+		display: none; opacity: 0.5; width: 20px;
+		text-align: right;
+	}
+
+	&:hover {
+		.anchor-link {
+			display: initial;
+
+			&:hover {
+				opacity: 1;
+			}
+		}
 	}
 }
 
@@ -278,23 +308,37 @@ body.admin-bar {
 }
 
 #comments-drawer {
-	width: $comments_drawer_w; z-index: 1500;
+	width: $comments_drawer_w; max-width: 60vw;
 	position: fixed; top: 0; bottom: 0;
-	right: -$comments_drawer_w; padding: 30px 40px;
-	background-color: $N0;
+	right: -$comments_drawer_w; padding: 20px;
+	background-color: $N0; z-index: 1500;
 	overflow-x: hidden; transition: 0.5s;
+	display: flex; flex-direction: column;
 
 	&.open {
 		right: 0;
 	}
-	.comment-container {
-		background: $N30;
-		padding: 20px;
-		margin-bottom: 20px;
-		border-radius: $border_radius;
-	}
-	.comment-notes {
-		font-size: 0.85rem; color: $N400;
+	.comments-body {
+		overflow-y: scroll;
+
+		.comment {
+			.comment-container {
+				background: $N20;
+				padding: 20px;
+				margin-bottom: 20px;
+				border-radius: 20px;
+				border-bottom-right-radius: 0;
+			}
+			.comment-notes {
+				font-size: 0.85rem; color: $N400;
+			}
+
+			&.bypostauthor {
+				.comment-container {
+					background: $B50;
+				}
+			}
+		}
 	}
 }
 #comments-overlay {
