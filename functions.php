@@ -423,6 +423,7 @@ class DezoTheme_Main {
 		$tag = ( 'div' === $args['style'] ) ? 'div' : 'li';
 		$comm_id = get_comment_ID();
 		$comm_auth_name = get_comment_author();
+		$this_post = get_post();
 
 		if ($args['avatar_size'] != 0) {
 			$comm_avatar_url = get_avatar_url($comment, [
@@ -442,8 +443,15 @@ class DezoTheme_Main {
 					</div>
 				<?php endif; ?>
 				<div class="col pl-0">
-					<h5 class="comment-author-name"><?php echo $comm_auth_name ?></h5>
-					<time datetime="<?php comment_time( 'c' ); ?>"> <?php echo get_comment_date(). ' ' .get_comment_time(); ?> </time>
+					<h5 class="comment-author-name">
+						<?php echo $comm_auth_name ?>
+					</h5>
+					<p class="comment-extra-info mb-0">
+						<time datetime="<?php comment_time( 'c' ); ?>">
+							<?php echo get_comment_date(). ' ' .get_comment_time(); ?>
+						</time>
+						<?php if($this_post->post_author == $comment->user_id) echo ' &bull; '. __('Post author', 'dezodev') ?>
+					</p>
 				</div>
 			</header>
 
